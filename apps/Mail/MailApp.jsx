@@ -1,27 +1,29 @@
 import { mailService } from "./services/mailService.js";
 import { MailList } from './cmps/MailList.jsx';
+import { MailFilter } from './cmps/MailFilter.jsx';
+// import { MailCompose } from './cmps/MailCompose.jsx';
+const { Link } = ReactRouterDOM;
+
 
 export class MailApp extends React.Component {
 
     state = {
         mails: [],
-        // filterBy: {
-        //     subject: '',
-        //     isRead: null,
-        //     sentAt: null
-        // },
-    };
-
-    componentDidMount() {
-        this.loadMails();
+        filterBy: {
+            txt: '',
+            isRead: null,
+            folder: null
+        }
     }
 
-    // componentWillUnmount() {
-    // }
+    componentDidMount() {
+        this.loadMails()
+    }
+
 
     loadMails = () => {
         mailService.query().then(mails => {
-            this.setState({ mails });
+            this.setState({ mails })
         });
     }
 
@@ -32,41 +34,40 @@ export class MailApp extends React.Component {
         })
     }
 
-    // getPetsForDisplay = () => {
-    //     const { filterBy } = this.state;
-    //     const filterRegex = new RegExp(filterBy.name, 'i');
-    //     return this.state.pets.filter(pet => filterRegex.test(pet.name));
+    onSetFilter = (filterBy) => {
+        this.setState({ filterBy });
+    }
 
-    //     // Another way of doing filter
-    //     // const txt = filterBy.name.toLowerCase()
-    //     // return this.state.pets.filter(pet => {
-    //     //     return pet.name.toLowerCase().includes(txt);
-    //     // });
-    // }
 
     get mailsForDisplay() {
         // const { filterBy } = this.state;
-        // const filterRegex = new RegExp(filterBy.subject, 'i');
+        // const filterRegex = new RegExp(filterBy.txt, 'i');
         // return this.state.mails.filter(mail => filterRegex.test(mail.subject));
-        return this.state.mails
+
+
+        const { mails, filterBy } = this.state
+        const filterRegex = new RegExp(filterBy.txt, 'i')
+        return mails.filter(mail => {
+            let isTxtFit = filterRegex.test(mail.subject)
+            let isReadFit = mail.isRead === filterBy.isRead
+
+            if (!filterBy.txt) isTxtFit = true
+            if (filterBy.isRead === null) isReadFit = true
+            return isTxtFit && isReadFit
+        });
+
     }
 
-    // onSetFilter = (filterBy) => {
-    //     console.log('filterBy:', filterBy);
-    //     this.setState({ filterBy });
-    // }
 
     render() {
-        // const petsForDisplay = this.getPetsForDisplay()
-        const mailsForDisplay = this.mailsForDisplay;
+        const mailsForDisplay = this.mailsForDisplay
         return (
             <section className="mail-app">
-
-                In Mail App
-                {/* <PetFilter setFilter={this.onSetFilter} /> */}
-                {/* <Link className="btn" to="/pet/edit">Add Pet</Link>
-                <h2>My Pets</h2> */}
+                <MailFilter setFilter={this.onSetFilter} />
+                <Link to="/mail/edit">Compose</Link>
                 <MailList mails={mailsForDisplay} onRemove={this.onRemoveMail} />
+                {/* <MailCompose /> */}
+
             </section>
         );
     }
