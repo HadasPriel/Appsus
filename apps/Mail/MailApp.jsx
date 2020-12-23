@@ -1,12 +1,14 @@
 import { mailService } from "./services/mailService.js";
+import { MailList } from './cmps/MailList.jsx';
 
 export class MailApp extends React.Component {
 
     state = {
         mails: [],
         // filterBy: {
-        //     name: '',
-        //     power: null
+        //     subject: '',
+        //     isRead: null,
+        //     sentAt: null
         // },
     };
 
@@ -24,11 +26,11 @@ export class MailApp extends React.Component {
     }
 
 
-    // onRemovePet = (petId) => {
-    //     petService.remove(petId).then(() => {
-    //         this.loadPets()
-    //     })
-    // }
+    onRemoveMail = (mailId) => {
+        mailService.remove(mailId).then(() => {
+            this.loadMails()
+        })
+    }
 
     // getPetsForDisplay = () => {
     //     const { filterBy } = this.state;
@@ -42,11 +44,12 @@ export class MailApp extends React.Component {
     //     // });
     // }
 
-    // get petsForDisplay() {
-    //     const { filterBy } = this.state;
-    //     const filterRegex = new RegExp(filterBy.name, 'i');
-    //     return this.state.pets.filter(pet => filterRegex.test(pet.name));
-    // }
+    get mailsForDisplay() {
+        // const { filterBy } = this.state;
+        // const filterRegex = new RegExp(filterBy.subject, 'i');
+        // return this.state.mails.filter(mail => filterRegex.test(mail.subject));
+        return this.state.mails
+    }
 
     // onSetFilter = (filterBy) => {
     //     console.log('filterBy:', filterBy);
@@ -55,15 +58,15 @@ export class MailApp extends React.Component {
 
     render() {
         // const petsForDisplay = this.getPetsForDisplay()
-        // const petsForDisplay = this.petsForDisplay;
+        const mailsForDisplay = this.mailsForDisplay;
         return (
             <section className="mail-app">
 
-                In Mail App hadassasasa
-                {/* <PetFilter setFilter={this.onSetFilter} />
-                <Link className="btn" to="/pet/edit">Add Pet</Link>
-                <h2>My Pets</h2>
-                <PetList pets={petsForDisplay} onRemove={this.onRemovePet} /> */}
+                In Mail App
+                {/* <PetFilter setFilter={this.onSetFilter} /> */}
+                {/* <Link className="btn" to="/pet/edit">Add Pet</Link>
+                <h2>My Pets</h2> */}
+                <MailList mails={mailsForDisplay} onRemove={this.onRemoveMail} />
             </section>
         );
     }
