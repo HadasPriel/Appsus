@@ -61,7 +61,7 @@ export class KeepApp extends React.Component {
             <section className="keep-app">
                 {/* <PetFilter setFilter={this.onSetFilter} />
                 <Link className="btn" to="/pet/edit">Add Pet</Link> */}
-               In Keep App
+               In Keep App Sandra changed
                 {/* <PetList pets={petsForDisplay} onRemove={this.onRemovePet} /> */}
             </section>
         );
