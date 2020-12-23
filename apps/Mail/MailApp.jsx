@@ -1,25 +1,27 @@
+import { mailService } from "./services/mailService.js";
+
 export class MailApp extends React.Component {
 
     state = {
-        pets: [],
-        filterBy: {
-            name: '',
-            power: null
-        },
+        mails: [],
+        // filterBy: {
+        //     name: '',
+        //     power: null
+        // },
     };
 
-    // componentDidMount() {
-    //    this.loadPets(); 
-    // }
+    componentDidMount() {
+        this.loadMails();
+    }
 
     // componentWillUnmount() {
     // }
 
-    // loadPets = () => {
-    //     petService.query().then(pets => {
-    //         this.setState({ pets });
-    //     });
-    // }
+    loadMails = () => {
+        mailService.query().then(mails => {
+            this.setState({ mails });
+        });
+    }
 
 
     // onRemovePet = (petId) => {
