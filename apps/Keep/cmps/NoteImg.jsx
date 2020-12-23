@@ -1,9 +1,10 @@
-export function NoteImg({ info }) {
+export function NoteImg({ info, keepId, onRemoveKeep }) {
 
     return (
-    <label>
-        <div> {info.title}</div>
-      
-    </label>
+        <div className='note-img'>
+            <p>{info.title}</p>
+            <img src={info.url} />
+            <button onClick={()=>{onRemoveKeep(keepId)}}>Remove</button>
+        </div>
     )
 }

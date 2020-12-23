@@ -1,3 +1,13 @@
+/* Keep App Main CSS */
+@import '../../apps/Keep/assets/css/KeepMain.css';
+
+
+
+/* Keep App Components */
+@import '../../apps/Keep/assets/css/cmps/NoteImg.css';
+@import '../../apps/Keep/assets/css/cmps/NoteTodos.css';
+@import '../../apps/Keep/assets/css/cmps/NoteTxt.css';
+
 body {
     background-color: lightblue;
 }
