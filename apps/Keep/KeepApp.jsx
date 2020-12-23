@@ -1,69 +1,55 @@
+import { keepService } from "./services/keepService.js";
+import {NoteTxt} from "./cmps/NoteTxt.jsx"
+import {NoteTodos} from "./cmps/NoteTodos.jsx"
+import {NoteImg} from "./cmps/NoteImg.jsx"
 
 const { Link } = ReactRouterDOM;
 
 export class KeepApp extends React.Component {
 
     state = {
-        pets: [],
-        filterBy: {
-            name: '',
-            power: null
-        },
+        keeps: [],
+      
     };
 
-    // componentDidMount() {
-    //    this.loadPets(); 
-    // }
+    componentDidMount() {
+       this.loadKeeps(); 
+    }
 
-    // componentWillUnmount() {
-    // }
-
-    // loadPets = () => {
-    //     petService.query().then(pets => {
-    //         this.setState({ pets });
-    //     });
-    // }
-
-
-    // onRemovePet = (petId) => {
-    //     petService.remove(petId).then(() => {
-    //         this.loadPets()
-    //     })
-    // }
-
-    // getPetsForDisplay = () => {
-    //     const { filterBy } = this.state;
-    //     const filterRegex = new RegExp(filterBy.name, 'i');
-    //     return this.state.pets.filter(pet => filterRegex.test(pet.name));
-
-    //     // Another way of doing filter
-    //     // const txt = filterBy.name.toLowerCase()
-    //     // return this.state.pets.filter(pet => {
-    //     //     return pet.name.toLowerCase().includes(txt);
-    //     // });
-    // }
-
-    // get petsForDisplay() {
-    //     const { filterBy } = this.state;
-    //     const filterRegex = new RegExp(filterBy.name, 'i');
-    //     return this.state.pets.filter(pet => filterRegex.test(pet.name));
-    // }
-
-    // onSetFilter = (filterBy) => {
-    //     console.log('filterBy:', filterBy);
-    //     this.setState({ filterBy });
-    // }
+    loadKeeps = () => {
+        keepService.query().then(keeps => {
+            this.setState({ keeps });
+        });
+    }
 
     render() {
-        // const petsForDisplay = this.getPetsForDisplay()
-        // const petsForDisplay = this.petsForDisplay;
+        const { keeps } = this.state;
         return (
             <section className="keep-app">
-                {/* <PetFilter setFilter={this.onSetFilter} />
-                <Link className="btn" to="/pet/edit">Add Pet</Link> */}
-               In Keep App Sandra changed
-                {/* <PetList pets={petsForDisplay} onRemove={this.onRemovePet} /> */}
+                <h1>Keeps</h1>
+
+                <form>
+                   {keeps.map((keep, idx) => <div key={idx}>
+                        <DynamicSurveyCmp currCmp={keep.type} info={keep.info} />
+                    </div>)}
+                </form>
             </section>
         );
     }
+    
 }
+
+
+function DynamicSurveyCmp({ currCmp, info}) {
+    switch (currCmp) {
+        case 'NoteText':
+            return <NoteTxt info={info}/>
+        case 'NoteImg':
+            return   <NoteImg info={info}/>
+        case 'NoteTodos':
+            return <NoteTodos info={info}/>
+    }
+    return <p>UNKNWON</p>
+}
+
+
