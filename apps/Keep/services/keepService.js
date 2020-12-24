@@ -104,10 +104,15 @@ function save(keep) {
 }
 
 function _add(keep) {
+    
     const keepToAdd = {
         id: utilService.makeId(),
         ...keep
     };
+
+    if (keepToAdd.type === 'NoteTodos'){
+        keepToAdd.info.todos= turnToToDos(keepToAdd.info.todos)
+    }
     gKeeps = [keepToAdd, ...gKeeps];
     _saveKeepsToStorage();
     return Promise.resolve(keepToAdd);
@@ -186,6 +191,7 @@ function getTemplateKeep(type) {
 
 function turnToToDos(input) {
     let todos = input.split(',')
+    console.log(todos)
     let todosAsObj = todos.map(todo => {
         return {
             txt: todo,

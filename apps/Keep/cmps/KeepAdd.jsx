@@ -47,10 +47,12 @@ export class KeepAdd extends React.Component {
 
     };
 
+    // /keepService.turnToToDos(ev.target.value)
+
     onInputChange = (ev) => {
         const keep = { ...this.state.keep };
 
-        const value = (keep.type!=='NoteTodos')? ev.target.value:  keepService.turnToToDos(ev.target.value)
+        const value = ev.target.value
         keep.info[ev.target.name] = value
         this.setState({
             keep
