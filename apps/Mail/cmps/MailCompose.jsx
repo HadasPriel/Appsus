@@ -11,8 +11,15 @@ export class MailCompose extends React.Component {
     refInput = React.createRef()
 
     componentDidMount() {
+        const mailIdToEdit = this.props.match.params.mailId
+        if (mailIdToEdit) {
+            mailService.getById(mailIdToEdit)
+                .then(mail => {
+                    const copymail = { subject: 'Re: ' + mail.subject, body: mail.body }
+                    this.setState({ mail: copymail })
+                })
+        }
         this.refInput.current.focus()
-
     }
 
     onInputChange = (ev) => {
@@ -29,8 +36,8 @@ export class MailCompose extends React.Component {
             let ans = confirm('Send this message without a subject?')
             if (!ans) return;
         }
-
         mailService.save(this.state.mail)
+
         this.setState({
             mail: {
                 subject: '',

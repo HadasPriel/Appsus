@@ -22,15 +22,19 @@ export class MailApp extends React.Component {
 
     componentDidMount() {
         this.loadMails()
+        this.getReadStatus()
+
+    }
+
+    getReadStatus = () => {
         mailService.getReadPercentage()
             .then(readPercentage => { this.setState({ readPercentage }) })
     }
 
-
     loadMails = () => {
         mailService.query().then(mails => {
             this.setState({ mails })
-        });
+        })
     }
 
 
@@ -38,11 +42,20 @@ export class MailApp extends React.Component {
         mailService.remove(mailId).then(() => {
             this.loadMails()
         })
+        this.getReadStatus()
+    }
+
+    onToggleRead = (mailId) => {
+        mailService.toggleMark(mailId).then(() => {
+            this.loadMails()
+        })
+        this.getReadStatus()
     }
 
     onSetFilter = (filterBy) => {
         this.setState({ filterBy });
     }
+
 
 
     get mailsForDisplay() {
@@ -76,7 +89,7 @@ export class MailApp extends React.Component {
                         <Link to="/mail/edit"> + Compose</Link>
                         <MailStatus readPercentage={readPercentage} />
                     </div>
-                    <MailList className="" mails={mailsForDisplay} onRemove={this.onRemoveMail} />
+                    <MailList mails={mailsForDisplay} onRemove={this.onRemoveMail} onToggleRead={this.onToggleRead} />
                 </div>
                 {/* <MailCompose /> */}
 

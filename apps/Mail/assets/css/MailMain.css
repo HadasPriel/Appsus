@@ -24,3 +24,8 @@
     font-family: fa-solid;
     content: "\f2ed";
 }
+
+.edit::after {
+    font-family: fa-solid;
+    content: "\f3e5";
+}
