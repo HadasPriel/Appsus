@@ -14,3 +14,7 @@
 .mail-details .date {
     font-size: 0.7rem;
 }
+
+.mail-details .back {
+    display: block;
+}

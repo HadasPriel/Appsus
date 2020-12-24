@@ -1,6 +1,6 @@
-import { mailService } from "../services/mailService.js"
+// import { mailService } from "../services/mailService.js"
+// import { MailStatus } from "./MailStatus.jsx";
 import { MailPreview } from "./MailPreview.jsx";
-import { MailStatus } from "./MailStatus.jsx";
 
 export class MailList extends React.Component {
     // export function MailList({ mails, onRemove }) {
