@@ -1,0 +1,40 @@
+.app-header {
+    background-color: rgb(18, 43, 63);
+    color: rgb(235, 250, 241);
+    margin-bottom: 30px;
+}
+
+.app-header .header-content {
+    padding: 20px 0;
+}
+
+
+/* .app-header .logo {
+    height: 60px;
+    filter: contrast(0)
+} */
+
+.logo::after {
+    font-family: fa-solid;
+    content: "\e065";
+    color: white;
+    font-size: 40px;
+}
+
+.app-header .header-nav li {
+    margin-left: 15px;
+}
+
+.app-header .header-nav a {
+    color: rgb(247, 235, 235);
+    border-radius: 2em;
+    padding: 5px 20px;
+}
+
+.app-header .active {
+    background-color: #fff;
+}
+
+.app-header .header-nav .active a {
+    color: rgb(18, 43, 63);
+}

@@ -1,0 +1,7 @@
+.mail-list {
+    background-color: rgba(255, 255, 255, 0.452);
+    padding: 10px 10px 50px 10px;
+    margin-left: 10px;
+    border-radius: 0.2em;
+    flex-grow: 1;
+}

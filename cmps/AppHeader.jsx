@@ -1,29 +1,27 @@
-const { NavLink, withRouter } = ReactRouterDOM;
+const { Link, NavLink, withRouter } = ReactRouterDOM;
 
 
 
 class _AppHeader extends React.Component {
 
     state = {
-        msg : ''
+        msg: ''
     }
- 
-   
+
+
     render() {
         return <header className="app-header">
-            <nav>
-                <ul>
-                    <li><NavLink activeClassName="my-active" exact to="/">Home</NavLink></li>
-                    <li><NavLink to="/mail">Mail</NavLink></li>
-                    <li><NavLink to="/keep">Keep</NavLink></li>
-                
-                </ul>
-                <div className="center">
-                    <h1>My Appsus</h1>
-                
-                </div>
-            </nav>
-    
+            <div className="header-content main-layout flex space-between align-center">
+                <Link className="logo" to={'/'}></Link>
+                <nav>
+                    <ul className="header-nav clean-list flex align-center">
+                        <li><NavLink exact to="/">Home</NavLink></li>
+                        <li><NavLink to="/mail">Mail</NavLink></li>
+                        <li><NavLink to="/keep">Keep</NavLink></li>
+
+                    </ul>
+                </nav>
+            </div>
         </header>
     }
 }

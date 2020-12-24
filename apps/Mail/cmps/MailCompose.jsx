@@ -1,3 +1,4 @@
+import { mailService } from "../services/mailService.js"
 
 export class MailCompose extends React.Component {
 
@@ -17,13 +18,9 @@ export class MailCompose extends React.Component {
     onInputChange = (ev) => {
         const mail = { ...this.state.mail }
         mail[ev.target.name] = ev.target.value
-        this.setState({
-            mail: {
-                subject: '',
-                body: '',
-            }
-        });
-    };
+        this.setState({ mail })
+
+    }
 
     onSaveMail = (ev) => {
         ev.preventDefault()
@@ -35,8 +32,12 @@ export class MailCompose extends React.Component {
 
         mailService.save(this.state.mail)
         this.setState({
-            mail
+            mail: {
+                subject: '',
+                body: '',
+            }
         });
+        this.props.history.push('/mail')
     }
 
     render() {
@@ -52,7 +53,7 @@ export class MailCompose extends React.Component {
                         placeholder="Write your mail here..." type="text" name="body"
                         onChange={this.onInputChange} />
 
-                    <button type="button" onClick={this.onAnimate}>Send</button>
+                    <button>Send</button>
                 </form>
             </section>
         )

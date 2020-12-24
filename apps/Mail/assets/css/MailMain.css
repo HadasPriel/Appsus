@@ -1,7 +1,26 @@
-body {
-    background-color: lightblue;
+.mail-app {
+    padding: 20px;
 }
 
-.unread {
-    font-weight: 800;
+.mail-app .bar-main {
+    display: flex;
+}
+
+.mail-app .bar-seconde>* {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.mail-app .bar-seconde a {
+    padding: 5px 10px;
+    margin-bottom: 50px;
+    color: white;
+    background: linear-gradient(151deg, rgba(18, 43, 63, 1) 2%, rgba(239, 108, 145, 1) 70%, rgba(203, 222, 233, 1) 96%);
+    border-radius: 2em;
+}
+
+.delete::after {
+    font-family: fa-solid;
+    content: "\f2ed";
 }

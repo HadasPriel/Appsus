@@ -47,12 +47,12 @@ export class MailDetails extends React.Component {
         const { id, subject, body } = this.state.mail
         var time = this.mailDate
         return (
-            <article className="mail-details">
-                <h1>{subject}</h1>
-                <h2>sent at: {time}</h2>
-                <p>{body}</p>
+            <article className="mail-details main-layout">
+                <h1 className="subject">{subject}</h1>
+                <button className="delete" onClick={this.onRemove}></button>
+                <h2 className="date">sent at: {time}</h2>
+                <p className="body">{body}</p>
 
-                <button onClick={this.onRemove}>delete email</button>
 
                 <Link to={'/mail'}> inbox </Link>
             </article>

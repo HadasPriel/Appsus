@@ -1,0 +1,13 @@
+.status {
+    border-radius: 2em;
+    padding: 0 10px;
+    border: 2px solid rgb(18, 43, 63);
+}
+
+.status.bright {
+    color: rgb(235, 250, 241);
+}
+
+.status.dark {
+    color: rgb(18, 43, 63);
+}

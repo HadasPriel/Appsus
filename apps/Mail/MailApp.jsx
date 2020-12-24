@@ -1,6 +1,8 @@
 import { mailService } from "./services/mailService.js";
 import { MailList } from './cmps/MailList.jsx';
 import { MailFilter } from './cmps/MailFilter.jsx';
+import { MailStatus } from "./cmps/MailStatus.jsx";
+
 // import { MailCompose } from './cmps/MailCompose.jsx';
 const { Link } = ReactRouterDOM;
 
@@ -13,11 +15,15 @@ export class MailApp extends React.Component {
             txt: '',
             isRead: null,
             folder: null
-        }
+        },
+        readPercentage: null
+
     }
 
     componentDidMount() {
         this.loadMails()
+        mailService.getReadPercentage()
+            .then(readPercentage => { this.setState({ readPercentage }) })
     }
 
 
@@ -60,12 +66,18 @@ export class MailApp extends React.Component {
 
 
     render() {
+        const { readPercentage } = this.state
         const mailsForDisplay = this.mailsForDisplay
         return (
-            <section className="mail-app">
+            <section className="mail-app main-layout">
                 <MailFilter setFilter={this.onSetFilter} />
-                <Link to="/mail/edit">Compose</Link>
-                <MailList mails={mailsForDisplay} onRemove={this.onRemoveMail} />
+                <div className="bar-main">
+                    <div className="bar-seconde">
+                        <Link to="/mail/edit"> + Compose</Link>
+                        <MailStatus readPercentage={readPercentage} />
+                    </div>
+                    <MailList className="" mails={mailsForDisplay} onRemove={this.onRemoveMail} />
+                </div>
                 {/* <MailCompose /> */}
 
             </section>

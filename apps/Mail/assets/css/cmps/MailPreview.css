@@ -1,0 +1,29 @@
+.mail-preview {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 0.4em;
+    background-color: rgba(247, 235, 235, 0.657);
+    flex-grow: 1;
+    /* max-width: 800px;
+    min-width: 700px; */
+}
+
+.mail-preview a {
+    color: rgb(18, 43, 63);
+}
+
+.unread a {
+    font-weight: 800;
+}
+
+.mail-preview .bar>* {
+    font-family: fa-solid;
+}
+
+.mail-preview .read-sign::after {
+    content: "\f2b6";
+}
+
+.mail-preview.unread .read-sign::after {
+    content: "\f0e0";
+}

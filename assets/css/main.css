@@ -1,6 +1,16 @@
-/* MAIL */
+/* base */
+
+@import './base.css';
+@import './AppHeader.css';
+
+/* mail */
 
 @import '../../apps/Mail/assets/css/MailMain.css';
+@import '../../apps/Mail/assets/css/cmps/MailList.css';
+@import '../../apps/Mail/assets/css/cmps/MailPreview.css';
+@import '../../apps/Mail/assets/css/cmps/MailDetails.css';
+@import '../../apps/Mail/assets/css/cmps/MailFilter.css';
+@import '../../apps/Mail/assets/css/cmps/MailStatus.css';
 
 /* Keep App Main CSS */
 
@@ -11,17 +21,3 @@
 @import '../../apps/Keep/assets/css/cmps/NoteImg.css';
 @import '../../apps/Keep/assets/css/cmps/NoteTodos.css';
 @import '../../apps/Keep/assets/css/cmps/NoteTxt.css';
-body {
-    background-color: lightblue;
-}
-
-.user-preview {
-    background-color: darkcyan;
-    padding: 5px;
-    width: 200px;
-    text-align: center;
-}
-
-.user-preview button {
-    margin: 5px;
-}
