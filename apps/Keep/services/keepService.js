@@ -7,7 +7,8 @@ export const keepService = {
     remove,
     getTemplateKeep,
     save,
-    turnToToDos
+    turnToToDos,
+    getKeepById
 };
 var gKeeps;
 _createKeeps();
@@ -96,6 +97,7 @@ function _getDemoKeeps() {
 
 
 function save(keep) {
+ 
     if (keep.id) {
         return _update(keep);
     } else {
@@ -136,7 +138,7 @@ function remove(keepId) {
     return Promise.resolve();
 }
 
-function getById(keepId) {
+function getKeepById(keepId) {
     const keep = gKeeps.find(keep => keep.id === keepId);
     return Promise.resolve(keep);
 }

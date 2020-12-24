@@ -5,6 +5,7 @@ import { MailApp } from './apps/Mail/MailApp.jsx'
 import { MailDetails } from './apps/Mail/cmps/MailDetails.jsx'
 import { MailCompose } from './apps/Mail/cmps/MailCompose.jsx';
 import { Home } from './pages/Home.jsx'
+import { KeepEdit } from './apps/Keep/cmps/KeepEdit.jsx';
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch } = ReactRouterDOM;
 
@@ -17,6 +18,7 @@ export class RootCmp extends React.Component {
                 <section className="app">
                     <AppHeader />
                     <Switch>
+                        <Route path="/keep/edit/:keepId" component={KeepEdit} />
                         <Route path="/keep" component={KeepApp} />
                         <Route path="/mail/edit" component={MailCompose} />
                         <Route path="/mail/:mailId" component={MailDetails} />
