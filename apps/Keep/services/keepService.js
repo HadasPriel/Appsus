@@ -45,7 +45,7 @@ function _getDemoKeeps() {
             id: 'i774724',
             type: 'NoteImg',
             info: {
-                url: '../apps/Keep/assets/img/flower.png',
+                url: 'https://images.pexels.com/photos/289323/pexels-photo-289323.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
                 title: 'Me playing Mi'
             },
             style: {
@@ -68,7 +68,7 @@ function _getDemoKeeps() {
             id: 'i452524',
             type: 'NoteImg',
             info: {
-                url: '../apps/Keep/assets/img/2021.png',
+                url: 'https://cdn.pixabay.com/photo/2015/04/19/08/33/flower-729512_1280.jpg',
                 title: 'Me playing Mi'
             },
             style: {

@@ -57,7 +57,7 @@ export class KeepApp extends React.Component {
         const keeps = this.getKeepsForDisplay()
         return (
             <section className="keep-app main-layout">
-                <KeepAdd />
+                <KeepAdd loadKeeps ={this.loadKeeps}/>
                 <NoteFilter setFilter={this.onSetFilter} />
                 <section className="notes-container">
                     {keeps.map((keep, idx) => <div key={idx}>

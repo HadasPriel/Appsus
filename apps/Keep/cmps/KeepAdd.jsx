@@ -22,7 +22,7 @@ export class KeepAdd extends React.Component {
 
         keepService.getTemplateKeep('NoteText').then(({ keep, wellcomeMsg, key }) => {
             this.setState({ keep, wellcomeMsg, key });
-        });
+        })
     }
 
     onChooseKeepType = (type) => {
@@ -38,12 +38,15 @@ export class KeepAdd extends React.Component {
         if (!this.state.keep.info) {
             return;
         }
-
+        // not sure about it
         keepService.save(this.state.keep)
             .then(savedKeep => {
                 console.log('Saves succesfully', savedKeep);
 
-            })
+            }).then(this.props.loadKeeps())
+            .then(keepService.getTemplateKeep('NoteText').then(({ keep, wellcomeMsg, key }) => {
+                this.setState({ keep, wellcomeMsg, key });
+            }))
 
     };
 
