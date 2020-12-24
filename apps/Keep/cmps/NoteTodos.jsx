@@ -1,7 +1,7 @@
 export function NoteTodos({ info, keepId, onRemoveKeep }) {
 
     return (
-        <div className='note-todos'>
+        <div className='note note-todos'>
             <p>{info.lable}</p>
             <input placeholder='Add your todo' />
             {info.todos.map((todo, idx) => <p key={idx}>

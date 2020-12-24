@@ -28,18 +28,18 @@ export class KeepApp extends React.Component {
     }
     getKeepsForDisplay = () => {
         const { keeps, filterBy } = this.state
-        if (!filterBy.txt && filterBy.type==='All') return keeps
-        else if(filterBy.txt) {
+        if (!filterBy.txt && filterBy.type === 'All') return keeps
+        else if (filterBy.txt) {
             const filterRegex = new RegExp(filterBy.txt, 'i')
             return keeps.filter(keep => {
                 if (keep.type === 'NoteText') return filterRegex.test(keep.info.txt)
-                if (keep.type === 'NoteTodos') return filterRegex.test(keep.info.label) || ( keep.info.todos.find(todo => filterRegex.test(todo.txt)))
-   
+                if (keep.type === 'NoteTodos') return filterRegex.test(keep.info.label) || (keep.info.todos.find(todo => filterRegex.test(todo.txt)))
+
             })
-        } else if (filterBy.type!=='All'){
+        } else if (filterBy.type !== 'All') {
             const filterRegex = new RegExp(filterBy.type, 'i')
             return keeps.filter(keep => filterRegex.test(keep.type))
-               
+
         }
     }
     onRemoveKeep = (keepId) => {
@@ -56,10 +56,9 @@ export class KeepApp extends React.Component {
     render() {
         const keeps = this.getKeepsForDisplay()
         return (
-            <section className="keep-app">
-                <h1>Keeps</h1>
+            <section className="keep-app main-layout">
+                <KeepAdd />
                 <NoteFilter setFilter={this.onSetFilter} />
-                <KeepAdd/>
                 <section className="notes-container">
                     {keeps.map((keep, idx) => <div key={idx}>
                         <DynamicSurveyCmp currCmp={keep.type} keepId={keep.id} info={keep.info} onRemoveKeep={this.onRemoveKeep} />

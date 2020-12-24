@@ -1,8 +1,8 @@
 .note-img {
-    background-color: green;
+    background-color: rgb(131, 197, 190);
 }
 
-.note-img img{
+.note-img img {
     width: 50%;
     height: 50%;
     object-fit: cover;

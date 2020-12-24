@@ -1,0 +1,41 @@
+.keep-add {
+    text-align: center;
+}
+
+.keep-add .row {
+    display: inline-block;
+    padding: 15px;
+    border-radius: 1em;
+    background-color: rgba(255, 255, 255, 0.596);
+    margin-bottom: 50px;
+}
+
+.keep-add input {
+    background-color: rgba(255, 255, 255, 0);
+    width: 400px;
+}
+
+.keep-add .bar {
+    display: inline-block;
+}
+
+.keep-add .bar>* {
+    font-family: fa-solid;
+}
+
+.keep-add .txt::after {
+    content: "\f031";
+}
+
+.keep-add .img::after {
+    content: "\f03e";
+}
+
+.keep-add .list::after {
+    content: "\f0ca";
+}
+
+.keep-add .save::after {
+    font-family: fa-solid;
+    content: "\f0c7";
+}

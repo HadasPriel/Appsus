@@ -26,7 +26,7 @@ export class KeepAdd extends React.Component {
     }
 
     onChooseKeepType = (type) => {
-        
+
         keepService.getTemplateKeep(type).then(({ keep, wellcomeMsg, key }) => {
             this.setState({ keep, wellcomeMsg, key });
         })
@@ -40,10 +40,10 @@ export class KeepAdd extends React.Component {
         }
 
         keepService.save(this.state.keep)
-        .then(savedKeep => {
-            console.log('Saves succesfully', savedKeep );
-            
-        })
+            .then(savedKeep => {
+                console.log('Saves succesfully', savedKeep);
+
+            })
 
     };
 
@@ -62,15 +62,18 @@ export class KeepAdd extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.onSaveKeep}>
-
-                <input value={this.state.keep.info[this.state.key]} ref={this.refInput}
-                    placeholder={this.state.wellcomeMsg} type="text" name={this.state.key}
-                    onChange={this.onInputChange} />
-                <button type='button' onClick={() => this.onChooseKeepType('NoteText')}>Text</button>
-                <button  type='button'onClick={() => this.onChooseKeepType('NoteImg')}>Image</button>
-                <button  type='button' onClick={() => this.onChooseKeepType('NoteTodos')}>List</button>
-                <button type='submit'>Save</button>
+            <form className="keep-add" onSubmit={this.onSaveKeep}>
+                <div className="row">
+                    <input value={this.state.keep.info[this.state.key]} ref={this.refInput}
+                        placeholder={this.state.wellcomeMsg} type="text" name={this.state.key}
+                        onChange={this.onInputChange} />
+                    <div className="bar">
+                        <button className="txt" type='button' onClick={() => this.onChooseKeepType('NoteText')}></button>
+                        <button className="img" type='button' onClick={() => this.onChooseKeepType('NoteImg')}></button>
+                        <button className="list" type='button' onClick={() => this.onChooseKeepType('NoteTodos')}></button>
+                    </div>
+                </div>
+                <button className="save" type='submit'></button>
 
 
             </form>
