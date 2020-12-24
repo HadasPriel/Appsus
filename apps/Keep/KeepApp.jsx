@@ -57,11 +57,11 @@ export class KeepApp extends React.Component {
         const keeps = this.getKeepsForDisplay()
         return (
             <section className="keep-app main-layout">
-                <KeepAdd />
+                <KeepAdd loadKeeps ={this.loadKeeps}/>
                 <NoteFilter setFilter={this.onSetFilter} />
                 <section className="notes-container">
                     {keeps.map((keep, idx) => <div key={idx}>
-                        <DynamicSurveyCmp currCmp={keep.type} keepId={keep.id} info={keep.info} onRemoveKeep={this.onRemoveKeep} />
+                        <DynamicCmp currCmp={keep.type} keepId={keep.id} info={keep.info} onRemoveKeep={this.onRemoveKeep} />
                     </div>)}
                 </section>
             </section>
@@ -71,7 +71,7 @@ export class KeepApp extends React.Component {
 }
 
 
-function DynamicSurveyCmp({ currCmp, info, keepId, onRemoveKeep }) {
+function DynamicCmp({ currCmp, info, keepId, onRemoveKeep }) {
     switch (currCmp) {
         case 'NoteText':
             return <NoteTxt info={info} keepId={keepId} onRemoveKeep={onRemoveKeep} />
