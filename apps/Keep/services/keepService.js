@@ -4,7 +4,10 @@ import { storageService } from '../../../services/storageService.js'
 const KEY_KEEPS = 'keepsDB'
 export const keepService = {
     query,
-    remove
+    remove,
+    getTemplateKeep,
+    save,
+    turnToToDos
 };
 var gKeeps;
 _createKeeps();
@@ -100,10 +103,10 @@ function save(keep) {
     }
 }
 
-function _add(type) {
+function _add(keep) {
     const keepToAdd = {
         id: utilService.makeId(),
-        ...type
+        ...keep
     };
     gKeeps = [keepToAdd, ...gKeeps];
     _saveKeepsToStorage();
@@ -131,4 +134,64 @@ function remove(keepId) {
 function getById(keepId) {
     const keep = gKeeps.find(keep => keep.id === keepId);
     return Promise.resolve(keep);
+}
+
+function getTemplateKeep(type) {
+
+    switch (type) {
+        case 'NoteText':
+            return Promise.resolve({
+                keep: {
+                    type: 'NoteText',
+                    info: {
+                        txt: ''
+                    }
+                },
+                wellcomeMsg: 'What is on your mind',
+                key: 'txt'
+            })
+        case 'NoteImg':
+            return Promise.resolve({
+                keep: {
+                    type: 'NoteImg',
+                    info: {
+                        url: '',
+                        title: 'Image'
+                    },
+                    style: {
+                        backgroundColor: '#00d'
+                    }
+                },
+                wellcomeMsg: 'Enter image URL',
+                key: 'url'
+            })
+        case 'NoteTodos':
+            return Promise.resolve({
+                keep: {
+                    type: 'NoteTodos',
+                    info: {
+                        label: 'List',
+                        todos: []
+                    }
+                },
+                wellcomeMsg: 'Enter comma separated list',
+                key: 'todos'
+            }
+            )
+    }
+
+
+}
+
+
+function turnToToDos(input) {
+    let todos = input.split(',')
+    let todosAsObj = todos.map(todo => {
+        return {
+            txt: todo,
+            doneAt: null
+        }
+    })
+    console.log(todosAsObj)
+    return todosAsObj
 }
