@@ -9,7 +9,10 @@ export const keepService = {
     turnToToDos,
     getKeepById,
     add,
-    update
+    update,
+    addTodo,
+    updateTodo,
+    deleteTodo
 };
 var gKeeps;
 _createKeeps();
@@ -60,8 +63,8 @@ function _getDemoKeeps() {
             info: {
                 label: 'How was it:',
                 todos: [
-                    { txt: 'Do that', doneAt: null },
-                    { txt: 'Do this', doneAt: 187111111 }
+                    { id: utilService.makeId(), txt: 'Do that', doneAt: null },
+                    { id: utilService.makeId(), txt: 'Do this', doneAt: 187111111 }
                 ]
             }
         },
@@ -84,9 +87,9 @@ function _getDemoKeeps() {
             info: {
                 label: 'How was it:',
                 todos: [
-                    { txt: 'Hadas studies', doneAt: null },
-                    { txt: 'Buzz sleeps', doneAt: 187111111 },
-                    { txt: 'Buzz woke up', doneAt: 187111111 }
+                    { id: utilService.makeId(), txt: 'Hadas studies', doneAt: null },
+                    { id: utilService.makeId(), txt: 'Buzz sleeps', doneAt: 187111111 },
+                    { id: utilService.makeId(), txt: 'Buzz woke up', doneAt: 187111111 }
                 ]
             }
         }
@@ -109,6 +112,53 @@ function add(keep) {
     gKeeps = [keepToAdd, ...gKeeps];
     _saveKeepsToStorage();
     return Promise.resolve(keepToAdd);
+}
+
+function addTodo(txt, keepId) {
+    const todoAdd = {
+        id: utilService.makeId(),
+        doneAt: null,
+        txt: txt
+    };
+    const keepsCopy = [...gKeeps];
+    const keepToUpdate = { ...keepsCopy.find(keep => keep.id === keepId) }
+    const keepToUpdateIdx = keepsCopy.findIndex(keep => keep.id === keepToUpdate.id);
+    keepToUpdate.info.todos = [...keepToUpdate.info.todos, todoAdd]
+    keepsCopy[keepToUpdateIdx] = keepToUpdate;
+    gKeeps = keepsCopy;
+    _saveKeepsToStorage();
+    return Promise.resolve(keepToUpdate);
+}
+
+function updateTodo(todo, keepId) {
+
+    const todoToUpdate = { ...todo }
+    const keepsCopy = [...gKeeps];
+    const keepToUpdate = { ...keepsCopy.find(keep => keep.id === keepId) }
+    const keepToUpdateIdx = keepsCopy.findIndex(keep => keep.id === keepToUpdate.id);
+    const todosToUpdate = [...keepToUpdate.info.todos]
+    const todoToUpdateIdx = todosToUpdate.findIndex(todo => todo.id === todoToUpdate.id);
+    todosToUpdate[todoToUpdateIdx] = todoToUpdate
+    keepsCopy[keepToUpdateIdx].info.todos = [...todosToUpdate]
+    gKeeps = keepsCopy;
+    _saveKeepsToStorage();
+    return Promise.resolve(keepToUpdate);
+}
+
+function deleteTodo(todo, keepId) {
+    console.log('delete', todo)
+    
+    const todoToDelete = { ...todo }
+    const keepsCopy = [...gKeeps];
+    const keepToUpdate = { ...keepsCopy.find(keep => keep.id === keepId) }
+    const keepToUpdateIdx = keepsCopy.findIndex(keep => keep.id === keepToUpdate.id);
+    const todosToUpdate = [...keepToUpdate.info.todos]
+    const cleanTodos = todosToUpdate.filter(todo => todo.id !==todoToDelete.id)
+    keepsCopy[keepToUpdateIdx].info.todos = [...cleanTodos]
+    gKeeps = keepsCopy;
+    _saveKeepsToStorage();
+    return Promise.resolve(keepToUpdate);
+
 }
 
 function update(keep) {
@@ -187,6 +237,7 @@ function turnToToDos(input) {
     console.log(todos)
     let todosAsObj = todos.map(todo => {
         return {
+            id: utilService.makeId(),
             txt: todo,
             doneAt: null
         }

@@ -35,11 +35,11 @@ export class KeepEdit extends React.Component {
             <section className='keep-edit'>
 
                 {this.state.label && <input value={this.state.label}
-                    placeholder="Edit label" type="text" name="label"
+                    placeholder="Edit label" type="text" name="label" autoComplete="off"
                     onChange={this.onInputChange} />}
 
                 <input value={this.state.txt} required
-                    placeholder="Edit text" type="text" name="txt"
+                    placeholder="Edit text" type="text" name="txt" autoComplete="off"
                     onChange={this.onInputChange} />
                 <button onClick={this.props.toggleEdit}>Cancel Changes</button>
                 <button type='button'onClick={this.onSaveInputChanges}>Save Changes</button>
