@@ -1,7 +1,6 @@
 .app-header {
     background-color: rgb(18, 43, 63);
     color: rgb(235, 250, 241);
-    margin-bottom: 30px;
 }
 
 .app-header .header-content {
@@ -17,7 +16,7 @@
 .logo::after {
     font-family: fa-solid;
     content: "\e065";
-    color: white;
+    color: rgb(247, 235, 235);
     font-size: 40px;
 }
 

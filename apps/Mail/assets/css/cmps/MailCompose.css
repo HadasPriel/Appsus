@@ -1,6 +1,53 @@
 .mail-compose {
-    position: fixed;
-    height: 500px;
-    width: 500px;
-    background-color: #fff;
+    position: absolute;
+    height: 70%;
+    width: 450px;
+    right: 30px;
+    background-color: rgb(240, 240, 240);
+    bottom: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.mail-compose * {
+    display: block;
+    border-radius: 0;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 5px;
+    margin: 0;
+}
+
+.mail-compose header {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(18, 43, 63);
+    color: lavender;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.mail-compose .close {
+    cursor: pointer;
+}
+
+.mail-compose .subject {
+    border-bottom: 1px solid rgb(18, 43, 63);
+    width: 100%;
+}
+
+.mail-compose .body {
+    width: 100%;
+}
+
+.mail-compose .body:focus {
+    outline: none;
+}
+
+.mail-compose .send {
+    padding: 10px 30px;
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }

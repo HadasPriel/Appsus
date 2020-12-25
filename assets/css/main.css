@@ -1,6 +1,7 @@
 /* base */
 
 @import './base.css';
+@import './Home.css';
 @import './AppHeader.css';
 @import './UserMsg.css';
 

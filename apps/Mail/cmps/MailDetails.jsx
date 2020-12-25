@@ -10,7 +10,15 @@ export class MailDetails extends React.Component {
 
 
     componentDidMount() {
+        console.log('here');
         this.loadMail()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.mailId !== this.props.match.params.mailId) {
+            console.log('UPDATE', this.props);
+            this.loadMail()
+        }
     }
 
     loadMail() {
@@ -27,7 +35,7 @@ export class MailDetails extends React.Component {
 
     onRemove = () => {
         mailService.remove(this.state.mail.id)
-        this.props.history.goBack()
+        this.props.history.push('/mail')
     }
 
     onMove = (diff) => {

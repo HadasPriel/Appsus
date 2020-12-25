@@ -14,21 +14,38 @@ export class MailCompose extends React.Component {
         console.log(this.props);
         const mailIdToEdit = this.props.match.params.mailId
         if (mailIdToEdit) {
-            mailService.getById(mailIdToEdit)
-                .then(mail => {
-                    const copymail = { subject: 'Re: ' + mail.subject, body: mail.body }
-                    this.setState({ mail: copymail })
-                })
+            this.loadMail()
         }
         this.refInput.current.focus()
     }
     componentDidUpdate(prevProps) {
         if (prevProps.match.params.mailId !== this.props.match.params.mailId) {
-            console.log('UPDATE', this.props);
-            this.loadPet()
+            if (!this.props.match.params.mailId) {
+                this.loadEmptyMail()
+            } else {
+                console.log('UPDATE', this.props);
+                this.loadMail()
+            }
         }
     }
 
+    loadMail = () => {
+        const mailIdToEdit = this.props.match.params.mailId
+        mailService.getById(mailIdToEdit)
+            .then(mail => {
+                const copymail = { subject: 'Re: ' + mail.subject, body: mail.body }
+                this.setState({ mail: copymail })
+            })
+    }
+
+    loadEmptyMail = () => {
+        this.setState({
+            mail: {
+                subject: '',
+                body: '',
+            }
+        })
+    }
 
     onInputChange = (ev) => {
         const mail = { ...this.state.mail }
@@ -45,30 +62,29 @@ export class MailCompose extends React.Component {
             if (!ans) return;
         }
         mailService.save(this.state.mail)
+        this.loadEmptyMail()
+        this.props.history.push('/mail')
+    }
 
-        this.setState({
-            mail: {
-                subject: '',
-                body: '',
-            }
-        });
+    close = () => {
         this.props.history.push('/mail')
     }
 
     render() {
         return (
-            <section className="mail-compose">
+            <section className="mail-compose main-layout">
                 <form onSubmit={this.onSaveMail}>
+                    <header><span>New Massage</span><span className="close" onClick={this.close}>x</span></header>
 
-                    <input value={this.state.mail.subject} ref={this.refInput}
+                    <input className="subject" value={this.state.mail.subject} ref={this.refInput}
                         placeholder="Subject" type="text" name="subject"
-                        onChange={this.onInputChange} />
+                        onChange={this.onInputChange} autoComplete="off" />
 
-                    <input value={this.state.mail.body}
+                    <textarea className="input body" value={this.state.mail.body}
                         placeholder="Write your mail here..." type="text" name="body"
-                        onChange={this.onInputChange} />
+                        onChange={this.onInputChange} rows="15" />
 
-                    <button>Send</button>
+                    <button className="send">send </button>
                 </form>
             </section>
         )

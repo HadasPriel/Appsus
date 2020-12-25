@@ -1,25 +1,14 @@
 
+export function Home() {
 
-export class Home extends React.Component {
-    
-    state = {
-        user: {
-            score: 10,
-            age: 20,
-        },
+    return (
+        <section className="home main">
 
-        color: 'red'
-    }
+            <div className="hero">
+                {/* <img src="../assets/img/coffe.jpg" /> */}
+                <h2>ORGANIZE YOUR EVERYTHING</h2>
+            </div>
 
-  
-
-    render() {
-        return (
-            <section>
-                <h2>Home Sweet Home</h2>
-                <h3>{this.state.user.score}</h3>
-             
-            </section>
-        )
-    }
+        </section>
+    )
 }

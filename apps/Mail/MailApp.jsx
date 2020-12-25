@@ -7,7 +7,7 @@ import { MailDetails } from './cmps/MailDetails.jsx'
 import { MailCompose } from './cmps/MailCompose.jsx';
 
 const Router = ReactRouterDOM.HashRouter;
-const { Route, Link } = ReactRouterDOM;
+const { Route, Link, Switch } = ReactRouterDOM;
 // import { MailCompose } from './cmps/MailCompose.jsx';
 
 
@@ -28,6 +28,15 @@ export class MailApp extends React.Component {
         this.loadMails()
         this.getReadStatus()
 
+    }
+    componentDidUpdate(prevProps) {
+        if (prevProps.match !== this.props.match) {
+            this.loadMails()
+            this.getReadStatus()
+            if (!prevProps.match.params.mailId) return
+            console.log('UPDATE', this.props);
+            // this.loadMail()
+        }
     }
 
     getReadStatus = () => {
@@ -63,11 +72,6 @@ export class MailApp extends React.Component {
 
 
     get mailsForDisplay() {
-        // const { filterBy } = this.state;
-        // const filterRegex = new RegExp(filterBy.txt, 'i');
-        // return this.state.mails.filter(mail => filterRegex.test(mail.subject));
-
-
         const { mails, filterBy } = this.state
         const filterRegex = new RegExp(filterBy.txt, 'i')
         return mails.filter(mail => {
@@ -98,8 +102,10 @@ export class MailApp extends React.Component {
                 </div>
                 {/* <MailCompose /> */}
                 <Router>
-                    <Route path="/mail/edit/:mailId?" component={MailCompose} />
-                    <Route path="/mail/mailId" component={MailDetails} />
+                    <Switch>
+                        <Route path="/mail/edit/:mailId?" component={MailCompose} />
+                        <Route path="/mail/:mailId" component={MailDetails} />
+                    </Switch>
                 </Router>
             </section>
         );

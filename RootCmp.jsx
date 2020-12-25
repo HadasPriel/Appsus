@@ -2,8 +2,6 @@
 import { AppHeader } from './cmps/AppHeader.jsx';
 import { KeepApp } from './apps/Keep/KeepApp.jsx'
 import { MailApp } from './apps/Mail/MailApp.jsx'
-import { MailDetails } from './apps/Mail/cmps/MailDetails.jsx'
-import { MailCompose } from './apps/Mail/cmps/MailCompose.jsx';
 import { Home } from './pages/Home.jsx'
 import { eventBusService } from "./services/eventBusService.js";
 import { UserMsg } from './cmps/UserMsg.jsx';
@@ -36,10 +34,8 @@ export class RootCmp extends React.Component {
                     <AppHeader />
                     <UserMsg msg={msg} display={display} />
                     <Switch>
-                      
+
                         <Route path="/keep" component={KeepApp} />
-                        {/* <Route path="/mail/edit/:mailId?" component={MailCompose} />
-                        <Route path="/mail/:mailId" component={MailDetails} /> */}
                         <Route path="/mail" component={MailApp} />
                         <Route path="/" component={Home} />
                     </Switch>
