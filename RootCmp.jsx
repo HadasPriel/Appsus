@@ -7,7 +7,7 @@ import { MailCompose } from './apps/Mail/cmps/MailCompose.jsx';
 import { Home } from './pages/Home.jsx'
 import { eventBusService } from "./services/eventBusService.js";
 import { UserMsg } from './cmps/UserMsg.jsx';
-import { KeepEdit } from './apps/Keep/cmps/KeepEdit.jsx';
+
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch } = ReactRouterDOM;
 
@@ -36,7 +36,7 @@ export class RootCmp extends React.Component {
                     <AppHeader />
                     <UserMsg msg={msg} display={display} />
                     <Switch>
-                        <Route path="/keep/edit/:keepId" component={KeepEdit} />
+                      
                         <Route path="/keep" component={KeepApp} />
                         <Route path="/mail/edit/:mailId?" component={MailCompose} />
                         <Route path="/mail/:mailId" component={MailDetails} />

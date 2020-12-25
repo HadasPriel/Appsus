@@ -5,7 +5,6 @@ import { NoteImg } from "./cmps/NoteImg.jsx"
 import { NoteFilter } from "./cmps/NoteFilter.jsx"
 import { KeepAdd } from "./cmps/KeepAdd.jsx";
 
-const { Link } = ReactRouterDOM;
 
 export class KeepApp extends React.Component {
 
@@ -57,11 +56,11 @@ export class KeepApp extends React.Component {
         const keeps = this.getKeepsForDisplay()
         return (
             <section className="keep-app main-layout">
-                <KeepAdd loadKeeps ={this.loadKeeps}/>
+                <KeepAdd loadKeeps={this.loadKeeps} />
                 <NoteFilter setFilter={this.onSetFilter} />
                 <section className="notes-container">
-                    {keeps.map((keep, idx) => <div key={idx}>
-                        <DynamicCmp currCmp={keep.type} keepId={keep.id} info={keep.info} onRemoveKeep={this.onRemoveKeep} />
+                    {keeps.map((keep) => <div key={keep.id}>
+                        <DynamicCmp keep={keep} onRemoveKeep={this.onRemoveKeep} loadKeeps={this.loadKeeps} />
                     </div>)}
                 </section>
             </section>
@@ -71,14 +70,14 @@ export class KeepApp extends React.Component {
 }
 
 
-function DynamicCmp({ currCmp, info, keepId, onRemoveKeep }) {
-    switch (currCmp) {
+function DynamicCmp({ keep, onRemoveKeep, loadKeeps }) {
+    switch (keep.type) {
         case 'NoteText':
-            return <NoteTxt info={info} keepId={keepId} onRemoveKeep={onRemoveKeep} />
+            return <NoteTxt keep={keep} onRemoveKeep={onRemoveKeep} loadKeeps={loadKeeps} />
         case 'NoteImg':
-            return <NoteImg info={info} keepId={keepId} onRemoveKeep={onRemoveKeep} />
+            return <NoteImg keep={keep} onRemoveKeep={onRemoveKeep} loadKeeps={loadKeeps} />
         case 'NoteTodos':
-            return <NoteTodos info={info} keepId={keepId} onRemoveKeep={onRemoveKeep} />
+            return <NoteTodos keep={keep} onRemoveKeep={onRemoveKeep} loadKeeps={loadKeeps} />
     }
     return <p>UNKNWON</p>
 }

@@ -6,9 +6,10 @@ export const keepService = {
     query,
     remove,
     getTemplateKeep,
-    save,
     turnToToDos,
-    getKeepById
+    getKeepById,
+    add,
+    update
 };
 var gKeeps;
 _createKeeps();
@@ -35,7 +36,7 @@ function _getDemoKeeps() {
     const keeps = [
 
         {
-            id: 'i352224',
+            id: utilService.makeId(),
             type: 'NoteText',
             isPinned: true,
             info: {
@@ -43,7 +44,7 @@ function _getDemoKeeps() {
             }
         },
         {
-            id: 'i774724',
+            id: utilService.makeId(),
             type: 'NoteImg',
             info: {
                 url: 'https://images.pexels.com/photos/289323/pexels-photo-289323.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
@@ -54,7 +55,7 @@ function _getDemoKeeps() {
             }
         },
         {
-            id: 'i654524',
+            id: utilService.makeId(),
             type: 'NoteTodos',
             info: {
                 label: 'How was it:',
@@ -66,7 +67,7 @@ function _getDemoKeeps() {
         },
 
         {
-            id: 'i452524',
+            id: utilService.makeId(),
             type: 'NoteImg',
             info: {
                 url: 'https://cdn.pixabay.com/photo/2015/04/19/08/33/flower-729512_1280.jpg',
@@ -78,7 +79,7 @@ function _getDemoKeeps() {
         },
 
         {
-            id: 'i654574',
+            id: utilService.makeId(),
             type: 'NoteTodos',
             info: {
                 label: 'How was it:',
@@ -95,37 +96,27 @@ function _getDemoKeeps() {
 }
 
 
+function add(keep) {
 
-function save(keep) {
- 
-    if (keep.id) {
-        return _update(keep);
-    } else {
-        return _add(keep);
-    }
-}
-
-function _add(keep) {
-    
     const keepToAdd = {
         id: utilService.makeId(),
         ...keep
     };
 
-    if (keepToAdd.type === 'NoteTodos'){
-        keepToAdd.info.todos= turnToToDos(keepToAdd.info.todos)
+    if (keepToAdd.type === 'NoteTodos') {
+        keepToAdd.info.todos = turnToToDos(keepToAdd.info.todos)
     }
     gKeeps = [keepToAdd, ...gKeeps];
     _saveKeepsToStorage();
     return Promise.resolve(keepToAdd);
 }
 
-function _update(keep) {
+function update(keep) {
     const keepToUpdate = {
         ...keep
     };
     const keepsCopy = [...gKeeps];
-    const keepIdx = keepsCopy.findIndex(keep => keep.id === keep.id);
+    const keepIdx = keepsCopy.findIndex(keep => keep.id === keepToUpdate.id);
     keepsCopy[keepIdx] = keepToUpdate;
     gKeeps = keepsCopy;
     _saveKeepsToStorage();

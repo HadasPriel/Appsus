@@ -1,54 +1,52 @@
 import { keepService } from "../services/keepService.js";
-import { EmptyNoteTodos } from "./EmptyNoteTodos.jsx"
-import { EmptyNoteTxt } from "./EmptyNoteTxt.jsx"
-import { EmptyNoteImg } from "./EmptyNoteImg.jsx"
 
 export class KeepEdit extends React.Component {
 
     state = {
-        keep: {
-            type: null,
-            info: null
-        }
+
+        label:'',
+        txt: 'Your text'
+
     };
 
-
-
     componentDidMount() {
-        const { keepId } = this.props.match.params;
-        if (!keepId) return;
-        keepService.getKeepById(keepId).then(keep => {
-            this.setState({ keep });
+        const { label, txt } = this.props
+        this.setState( { label, txt })
+    }
+
+    onSaveInputChanges=()=>{
+        const { label, txt } = this.state
+        this.props.onSaveChange(label,txt)
+        this.setState( { 
+            label:'', 
+            txt :'Your text'})
+        this.props.toggleEdit()
+    }
+    onInputChange = (ev) => {
+        const value = ev.target.value;
+        this.setState({
+            [ev.target.name]:value
         });
-    }
-
-    onSaveKeep = (keep) => {
-        keepService.save(keep).then(savedKeep => {
-            console.log('Saves succesfully', savedKeep);
-        }).then(this.props.history.push('/keep'))
-
-    }
-
+    };
 
     render() {
-        const keep = { ...this.state.keep };
+    
         return (
             <section className='keep-edit'>
-                <DynamicEmptyCmp keep={keep} onSubmit={this.onSaveKeep} />
+
+                {this.state.label && <input value={this.state.label}
+                    placeholder="Edit label" type="text" name="label"
+                    onChange={this.onInputChange} />}
+
+                <input value={this.state.txt} required
+                    placeholder="Edit text" type="text" name="txt"
+                    onChange={this.onInputChange} />
+                <button onClick={this.props.toggleEdit}>Cancel Changes</button>
+                <button type='button'onClick={this.onSaveInputChanges}>Save Changes</button>
+
             </section>
         );
     }
 }
 
 
-function DynamicEmptyCmp({ keep, onSubmit }) {
-    switch (keep.type) {
-        case 'NoteText':
-            return <EmptyNoteTxt keep={keep} onSubmit={onSubmit} />
-        case 'NoteImg':
-            return <EmptyNoteImg keep={keep} onSubmit={onSubmit} />
-        case 'NoteTodos':
-            return <EmptyNoteTodos keep={keep} onSubmit={onSubmit} />
-    }
-    return <p>UNKNWON</p>
-}

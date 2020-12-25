@@ -39,7 +39,7 @@ export class KeepAdd extends React.Component {
             return;
         }
         // not sure about it
-        keepService.save(this.state.keep)
+        keepService.add(this.state.keep)
             .then(savedKeep => {
                 console.log('Saves succesfully', savedKeep);
 
