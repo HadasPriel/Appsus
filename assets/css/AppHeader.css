@@ -4,41 +4,59 @@
 }
 
 .app-header .header-content {
-    padding: 20px 0;
+    height: 100px;
+    padding: 0 10px;
+    position: relative;
 }
 
-
-/* .app-header .logo {
-    height: 60px;
-    filter: contrast(0)
-} */
-
-.logo::after {
+.app-header.logo::after {
+    color: rgb(241, 241, 241);
     font-family: fa-solid;
-    content: "\e065";
-    color: rgb(247, 235, 235);
+    content: "\f00a";
+    font-size: 40px;
+}
+
+.app-header .grid::after {
+    font-family: fa-solid;
+    content: "\f00a";
+    color: rgb(241, 241, 241);
     font-size: 40px;
 }
 
 
-/* .app-header .header-nav {
-    flex-direction: column;
+/* .app-header ul {
+    flex-wrap: wrap;
+    width: 215px;
+    position: absolute;
+    right: 50px;
+    top: 70px;
+    text-align: center;
+    line-height: 70px;
+    background-color: rgb(241, 241, 241);
+    border: 2px solid rgb(83, 83, 83);
+    border-radius: 5px;
 } */
 
-.app-header .header-nav li {
-    margin-left: 15px;
+.app-header .header-nav .item {
+    font-size: 20px;
+    display: inline-block;
+    height: 70px;
+    width: 70px;
+    font-family: fa-solid;
 }
 
-.app-header .header-nav a {
-    color: rgb(247, 235, 235);
-    border-radius: 2em;
-    padding: 5px 20px;
+.app-header .header-nav .home::after {
+    content: "\f015";
+}
+
+.app-header .header-nav .mail::after {
+    content: "\f0e0";
+}
+
+.app-header .header-nav .keep::after {
+    content: "\f249";
 }
 
 .app-header .active {
-    background-color: #fff;
-}
-
-.app-header .header-nav .active a {
-    color: rgb(18, 43, 63);
+    background-color: rgb(140, 177, 255);
 }

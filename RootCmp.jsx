@@ -1,5 +1,6 @@
 
 import { AppHeader } from './cmps/AppHeader.jsx';
+import { AppFooter } from './cmps/AppFooter.jsx';
 import { KeepApp } from './apps/Keep/KeepApp.jsx'
 import { MailApp } from './apps/Mail/MailApp.jsx'
 import { Home } from './pages/Home.jsx'
@@ -41,6 +42,7 @@ export class RootCmp extends React.Component {
                     </Switch>
 
                 </section>
+                <AppFooter />
             </Router>
         );
     }

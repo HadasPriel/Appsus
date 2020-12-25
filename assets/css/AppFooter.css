@@ -1,0 +1,14 @@
+.app-footer {
+    /* position: absolute;
+    bottom: 0; */
+    width: 100%;
+    text-align: center;
+    padding: 50px;
+    font-size: 12px;
+    background-color: rgb(18, 43, 63);
+    color: rgb(235, 250, 241);
+}
+
+.app-footer span {
+    font-weight: 800;
+}

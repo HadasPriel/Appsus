@@ -1,22 +1,105 @@
-.home hero {}
-
-
-/* .home hero img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover
+/* .home {
+    font-size: 25px;
 } */
 
 .home .hero {
+    padding: 100px;
     /* width: 400px; */
-    height: 400px;
+    height: 500px;
     /* object-fit: cover; */
     background-image: url(../img/cofeee.jpg);
     background-size: cover;
     background-position: center;
 }
 
-.home .hero h2 {
-    color: rgb(247, 235, 235);
+.home h2,
+p,
+h3 {
+    padding: 0;
     margin: 0;
+    text-transform: capitalize;
+}
+
+.home p {
+    font-size: 16px;
+}
+
+.home .hero h2 {
+    font-size: 25px;
+    color: rgb(247, 235, 235);
+    margin: 0 0px 20px 0px;
+    font-weight: 800;
+}
+
+.home .hero .last {
+    font-size: 35px;
+}
+
+.home .seconde {
+    background-color: rgba(255, 255, 255, 0.719);
+    padding: 100px 50px;
+}
+
+.home .seconde h2 {
+    margin-bottom: 20px;
+}
+
+.home .seconde button {
+    position: relative;
+    left: 80%;
+    margin-top: 30px;
+    background: linear-gradient(151deg, rgba(18, 43, 63, 1) 2%, rgba(239, 108, 145, 1) 70%, rgba(203, 222, 233, 1) 96%);
+    color: lavenderblush;
+    padding: 10px 30px;
+    border-radius: 2em;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.home .seconde button:hover {
+    left: 81%;
+    transition: left 0.3s, bottom 0.3s;
+    bottom: 2px;
+    box-shadow: -18px 15px 19px -16px rgba(0, 0, 0, 0.82);
+}
+
+.home .therd {
+    position: relative;
+    padding: 30px 20px 300px 100px;
+    background-image: url(../img/organise.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.home .therd h2 {
+    margin-bottom: 25px;
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.home .therd h3 {
+    margin-left: 30px;
+    font-weight: 600;
+}
+
+.home .therd .btn {
+    position: absolute;
+    top: 40%;
+    right: 50%;
+    background-color: #4361ee;
+    padding: 15px 50px;
+    color: lavenderblush;
+    border-radius: 0.3em;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.home .five {
+    padding: 100px 20px 250px 100px;
+    background-image: url(../img/friends.jpeg);
+    color: lavenderblush;
+}
+
+.home .five .btn {
+    top: 50%;
 }

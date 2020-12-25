@@ -23,9 +23,13 @@ body {
     font-weight: normal;
     text-align: start;
     font-family: sans-reguler;
-    background-image: url(../img/bg.jpg);
+    /* background-image: url(../img/bg.jpg); */
+    background-image: url(../img/58927.jpg);
+    /* background-image: url(../img/bgif.jpg); */
+    /* background-image: url(../img/130.jpg); */
     background-size: inherit;
     background-repeat: no-repeat;
+    background-blend-mode: overlay;
 }
 
 button {
