@@ -1,0 +1,8 @@
+.todo-preview.active{
+    text-decoration: none;
+}
+
+
+.todo-preview.done{
+    text-decoration: line-through;
+}

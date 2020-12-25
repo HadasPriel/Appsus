@@ -68,7 +68,7 @@ export class KeepAdd extends React.Component {
             <form className="keep-add" onSubmit={this.onSaveKeep}>
                 <div className="row">
                     <input value={this.state.keep.info[this.state.key]} ref={this.refInput}
-                        placeholder={this.state.wellcomeMsg} type="text" name={this.state.key}
+                        placeholder={this.state.wellcomeMsg} type="text" name={this.state.key} autoComplete="off"
                         onChange={this.onInputChange} />
                     <div className="bar">
                         <button className="txt" type='button' onClick={() => this.onChooseKeepType('NoteText')}></button>
