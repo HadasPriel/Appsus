@@ -74,6 +74,7 @@ export class KeepAdd extends React.Component {
                         <button className="txt" type='button' onClick={() => this.onChooseKeepType('NoteText')}></button>
                         <button className="img" type='button' onClick={() => this.onChooseKeepType('NoteImg')}></button>
                         <button className="list" type='button' onClick={() => this.onChooseKeepType('NoteTodos')}></button>
+                        <button className="video" type='button' onClick={() => this.onChooseKeepType('NoteVideo')}>Video</button>
                     </div>
                 </div>
                 <button className="save" type='submit'></button>

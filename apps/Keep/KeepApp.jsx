@@ -1,9 +1,10 @@
-import { keepService } from "./services/keepService.js";
+import { keepService } from "./services/keepService.js"
 import { NoteTxt } from "./cmps/NoteTxt.jsx"
 import { NoteTodos } from "./cmps/NoteTodos.jsx"
 import { NoteImg } from "./cmps/NoteImg.jsx"
 import { NoteFilter } from "./cmps/NoteFilter.jsx"
-import { KeepAdd } from "./cmps/KeepAdd.jsx";
+import { KeepAdd } from "./cmps/KeepAdd.jsx"
+import { NoteVideo } from "./cmps/NoteVideo.jsx"
 
 
 export class KeepApp extends React.Component {
@@ -17,12 +18,12 @@ export class KeepApp extends React.Component {
     };
 
     componentDidMount() {
-        this.loadKeeps();
+        this.loadKeeps()
     }
 
     loadKeeps = () => {
         keepService.query().then(keeps => {
-            this.setState({ keeps });
+            this.setState({ keeps })
         });
     }
     getKeepsForDisplay = () => {
@@ -48,7 +49,7 @@ export class KeepApp extends React.Component {
     }
 
     onSetFilter = (filterBy) => {
-        console.log('filterBy:', filterBy);
+        console.log('filterBy:', filterBy)
         this.setState({ filterBy });
     }
 
@@ -78,6 +79,8 @@ function DynamicCmp({ keep, onRemoveKeep, loadKeeps }) {
             return <NoteImg keep={keep} onRemoveKeep={onRemoveKeep} loadKeeps={loadKeeps} />
         case 'NoteTodos':
             return <NoteTodos keep={keep} onRemoveKeep={onRemoveKeep} loadKeeps={loadKeeps} />
+        case 'NoteVideo':
+            return <NoteVideo keep={keep} onRemoveKeep={onRemoveKeep} loadKeeps={loadKeeps} />
     }
     return <p>UNKNWON</p>
 }

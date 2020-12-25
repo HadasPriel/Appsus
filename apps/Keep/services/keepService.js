@@ -12,7 +12,8 @@ export const keepService = {
     update,
     addTodo,
     updateTodo,
-    deleteTodo
+    deleteTodo,
+    
 };
 var gKeeps;
 _createKeeps();
@@ -44,6 +45,9 @@ function _getDemoKeeps() {
             isPinned: true,
             info: {
                 txt: 'Fullstack Me Baby!'
+            },
+            style: {
+                backgroundColor: '#E0BBE4'
             }
         },
         {
@@ -54,7 +58,7 @@ function _getDemoKeeps() {
                 title: 'Me playing Mi'
             },
             style: {
-                backgroundColor: '#00d'
+                backgroundColor: '#957DAD'
             }
         },
         {
@@ -66,6 +70,9 @@ function _getDemoKeeps() {
                     { id: utilService.makeId(), txt: 'Do that', doneAt: null },
                     { id: utilService.makeId(), txt: 'Do this', doneAt: 187111111 }
                 ]
+            },
+            style: {
+                backgroundColor: '#D291BC'
             }
         },
 
@@ -77,8 +84,9 @@ function _getDemoKeeps() {
                 title: 'Me playing Mi'
             },
             style: {
-                backgroundColor: '#00d'
-            }
+                backgroundColor: '#FEC8D8'
+            },
+
         },
 
         {
@@ -91,8 +99,23 @@ function _getDemoKeeps() {
                     { id: utilService.makeId(), txt: 'Buzz sleeps', doneAt: 187111111 },
                     { id: utilService.makeId(), txt: 'Buzz woke up', doneAt: 187111111 }
                 ]
+            },
+            style: {
+                backgroundColor: '#FFDFD3'
             }
-        }
+        },
+        {
+            id: utilService.makeId(),
+            type: 'NoteVideo',
+            info: {
+                url: 'https://www.youtube.com/embed/sdDGBF5jW6A',
+                title: 'puppy'
+            },
+            style: {
+                backgroundColor: '#FEC8D8'
+            },
+
+        },
 
     ];
     return keeps;
@@ -100,7 +123,6 @@ function _getDemoKeeps() {
 
 
 function add(keep) {
-
     const keepToAdd = {
         id: utilService.makeId(),
         ...keep
@@ -131,7 +153,6 @@ function addTodo(txt, keepId) {
 }
 
 function updateTodo(todo, keepId) {
-
     const todoToUpdate = { ...todo }
     const keepsCopy = [...gKeeps];
     const keepToUpdate = { ...keepsCopy.find(keep => keep.id === keepId) }
@@ -146,14 +167,12 @@ function updateTodo(todo, keepId) {
 }
 
 function deleteTodo(todo, keepId) {
-    console.log('delete', todo)
-    
     const todoToDelete = { ...todo }
     const keepsCopy = [...gKeeps];
     const keepToUpdate = { ...keepsCopy.find(keep => keep.id === keepId) }
     const keepToUpdateIdx = keepsCopy.findIndex(keep => keep.id === keepToUpdate.id);
     const todosToUpdate = [...keepToUpdate.info.todos]
-    const cleanTodos = todosToUpdate.filter(todo => todo.id !==todoToDelete.id)
+    const cleanTodos = todosToUpdate.filter(todo => todo.id !== todoToDelete.id)
     keepsCopy[keepToUpdateIdx].info.todos = [...cleanTodos]
     gKeeps = keepsCopy;
     _saveKeepsToStorage();
@@ -179,6 +198,7 @@ function remove(keepId) {
     return Promise.resolve();
 }
 
+
 function getKeepById(keepId) {
     const keep = gKeeps.find(keep => keep.id === keepId);
     return Promise.resolve(keep);
@@ -193,7 +213,11 @@ function getTemplateKeep(type) {
                     type: 'NoteText',
                     info: {
                         txt: ''
+                    },
+                    style: {
+                        backgroundColor: '#FFDFD3'
                     }
+
                 },
                 wellcomeMsg: 'What is on your mind',
                 key: 'txt'
@@ -207,7 +231,7 @@ function getTemplateKeep(type) {
                         title: 'Image'
                     },
                     style: {
-                        backgroundColor: '#00d'
+                        backgroundColor: '#FFDFD3'
                     }
                 },
                 wellcomeMsg: 'Enter image URL',
@@ -220,12 +244,30 @@ function getTemplateKeep(type) {
                     info: {
                         label: 'List',
                         todos: []
+                    },
+                    style: {
+                        backgroundColor: '#FFDFD3'
                     }
                 },
                 wellcomeMsg: 'Enter comma separated list',
                 key: 'todos'
             }
             )
+        case 'NoteVideo':
+            return Promise.resolve({
+                keep: {
+                    type: 'NoteVideo',
+                    info: {
+                        url: '',
+                        title: 'Video'
+                    },
+                    style: {
+                        backgroundColor: '#FFDFD3'
+                    }
+                },
+                wellcomeMsg: 'Enter YouTube URL',
+                key: 'url'
+            })
     }
 
 
