@@ -1,6 +1,7 @@
-const { Link } = ReactRouterDOM;
+
 import { KeepEdit } from "./KeepEdit.jsx";
 import { keepService } from "../services/keepService.js";
+import { NoteColorPicker } from "./NoteColorPicker.jsx";
 
 export class NoteImg extends React.Component {
     state = {
@@ -15,7 +16,8 @@ export class NoteImg extends React.Component {
             }
         },
 
-        isEdit: false
+        isEdit: false,
+        isColor: false
     };
 
     componentDidMount() {
@@ -32,24 +34,38 @@ export class NoteImg extends React.Component {
             console.log('Saves succesfully', savedKeep);
         }).then(this.props.loadKeeps)
 
-    };
+    }
 
+    toggleColor = () => {
+        this.setState({ isColor: !this.state.isColor })
+    }
 
     toggleEdit = () => {
-
         this.setState({ isEdit: !this.state.isEdit })
     }
+
+    onSetColor = (color) => {
+        const { keep } = { ...this.state }
+        const keepCopy = JSON.parse(JSON.stringify(keep))
+        keepCopy.style.backgroundColor = color
+        keepService.update(keepCopy).then(savedKeep => {
+            this.setState({ keep: savedKeep });
+        })
+    }
+
     render() {
         const keep = { ...this.state.keep };
 
         return (
-            <div className='note note-img'>
+            <div className='note note-img' style={keep.style}>
 
                 <p>{keep.info.title}</p>
                 <img src={keep.info.url} />
                 <button onClick={() => { this.props.onRemoveKeep(keep.id) }}>Remove</button>
                 <button onClick={this.toggleEdit}>Edit</button>
+                <button onClick={this.toggleColor}>Color</button>
                 {this.state.isEdit && <KeepEdit txt={keep.info.url} toggleEdit={this.toggleEdit} label={keep.info.title} onSaveChange={this.onSaveChange} />}
+                {this.state.isColor && <NoteColorPicker toggleColor={this.toggleColor} onSetColor={this.onSetColor} />}
             </div>
         )
 

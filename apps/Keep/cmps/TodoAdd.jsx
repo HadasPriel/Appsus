@@ -19,6 +19,9 @@ export class TodoAdd extends React.Component {
         const txt = this.state.txt
         const keepId = this.props.id
         this.props.addTodo(txt, keepId)
+        this.setState({
+            txt: ''
+        });
     };
 
 
