@@ -1,0 +1,16 @@
+.folders .folder {
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.folders .pic::before {
+    font-family: fa-solid;
+    content: "\f07b";
+}
+
+@media (min-width: 1000px) {
+    .folders {
+        display: flex;
+        flex-direction: column;
+    }
+}

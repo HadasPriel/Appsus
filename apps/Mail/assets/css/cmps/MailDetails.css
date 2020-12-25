@@ -1,4 +1,10 @@
-.mail-details {
+.mail-details nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.mail-details .mail-body {
     width: 100%;
     padding: 20px 50px;
     background-color: rgba(255, 255, 255, 0.652);
@@ -15,11 +21,17 @@
     font-size: 0.7rem;
 }
 
-.mail-details .back {
-    display: block;
-}
-
 .mail-details .back::before {
     font-family: fa-solid;
     content: "\f01c";
+}
+
+.mail-details .next::after {
+    font-family: fa-solid;
+    content: "\f054";
+}
+
+.mail-details .prev::after {
+    font-family: fa-solid;
+    content: "\f053";
 }

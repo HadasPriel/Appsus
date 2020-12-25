@@ -1,7 +1,18 @@
 .mail-filter {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .mail-filter input {
     padding: 10px;
+    width: ;
+}
+
+@media (min-width: 1000px) {
+    .mail-filter {
+        margin-bottom: 20px;
+    }
+    .mail-filter input {
+        padding: 10px;
+        width: 70%;
+    }
 }

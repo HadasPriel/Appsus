@@ -12,6 +12,8 @@
 @import '../../apps/Mail/assets/css/cmps/MailDetails.css';
 @import '../../apps/Mail/assets/css/cmps/MailFilter.css';
 @import '../../apps/Mail/assets/css/cmps/MailStatus.css';
+@import '../../apps/Mail/assets/css/cmps/MailFolder.css';
+@import '../../apps/Mail/assets/css/cmps/MailCompose.css';
 
 /* Keep App Main CSS */
 

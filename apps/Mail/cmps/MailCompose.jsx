@@ -11,6 +11,7 @@ export class MailCompose extends React.Component {
     refInput = React.createRef()
 
     componentDidMount() {
+        console.log(this.props);
         const mailIdToEdit = this.props.match.params.mailId
         if (mailIdToEdit) {
             mailService.getById(mailIdToEdit)
@@ -21,6 +22,13 @@ export class MailCompose extends React.Component {
         }
         this.refInput.current.focus()
     }
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.mailId !== this.props.match.params.mailId) {
+            console.log('UPDATE', this.props);
+            this.loadPet()
+        }
+    }
+
 
     onInputChange = (ev) => {
         const mail = { ...this.state.mail }
@@ -49,7 +57,7 @@ export class MailCompose extends React.Component {
 
     render() {
         return (
-            <section>
+            <section className="mail-compose">
                 <form onSubmit={this.onSaveMail}>
 
                     <input value={this.state.mail.subject} ref={this.refInput}

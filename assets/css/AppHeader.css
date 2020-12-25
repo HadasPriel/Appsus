@@ -21,6 +21,11 @@
     font-size: 40px;
 }
 
+
+/* .app-header .header-nav {
+    flex-direction: column;
+} */
+
 .app-header .header-nav li {
     margin-left: 15px;
 }

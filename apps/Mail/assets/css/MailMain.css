@@ -1,22 +1,11 @@
-.mail-app {
-    padding: 20px;
-}
-
-.mail-app .bar-main {
-    display: flex;
-}
-
-.mail-app .bar-seconde>* {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
 .mail-app .bar-seconde a {
+    display: block;
+    margin-bottom: 10px;
+    width: 130px;
     padding: 5px 10px;
-    margin-bottom: 50px;
     color: white;
-    background: linear-gradient(151deg, rgba(18, 43, 63, 1) 2%, rgba(239, 108, 145, 1) 70%, rgba(203, 222, 233, 1) 96%);
+    background: rgba(18, 43, 63, 1);
+    /* background: linear-gradient(151deg, rgba(18, 43, 63, 1) 2%, rgba(239, 108, 145, 1) 70%, rgba(203, 222, 233, 1) 96%); */
     border-radius: 2em;
 }
 
@@ -28,4 +17,21 @@
 .edit::after {
     font-family: fa-solid;
     content: "\f3e5";
+}
+
+@media (min-width: 1000px) {
+    .mail-app .bar-main {
+        display: flex;
+    }
+    .mail-app .bar-seconde {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .mail-app .bar-seconde a {
+        width: inherit;
+    }
+    .mail-app {
+        padding: 20px;
+    }
 }

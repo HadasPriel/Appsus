@@ -1,7 +1,13 @@
 .mail-list {
     background-color: rgba(255, 255, 255, 0.452);
-    padding: 10px 10px 50px 10px;
-    margin-left: 10px;
+    padding: 0px 0px 50px 0px;
     border-radius: 0.2em;
     flex-grow: 1;
+}
+
+@media (min-width: 1000px) {
+    .mail-list {
+        padding: 10px 10px 50px 10px;
+        margin-left: 10px;
+    }
 }

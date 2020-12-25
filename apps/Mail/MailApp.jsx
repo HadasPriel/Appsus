@@ -2,9 +2,13 @@ import { mailService } from "./services/mailService.js";
 import { MailList } from './cmps/MailList.jsx';
 import { MailFilter } from './cmps/MailFilter.jsx';
 import { MailStatus } from "./cmps/MailStatus.jsx";
+import { MailFolder } from "./cmps/MailFolder.jsx";
+import { MailDetails } from './cmps/MailDetails.jsx'
+import { MailCompose } from './cmps/MailCompose.jsx';
 
+const Router = ReactRouterDOM.HashRouter;
+const { Route, Link } = ReactRouterDOM;
 // import { MailCompose } from './cmps/MailCompose.jsx';
-const { Link } = ReactRouterDOM;
 
 
 export class MailApp extends React.Component {
@@ -86,13 +90,17 @@ export class MailApp extends React.Component {
                 <MailFilter setFilter={this.onSetFilter} />
                 <div className="bar-main">
                     <div className="bar-seconde">
-                        <Link to="/mail/edit"> + Compose</Link>
+                        <Link className="edit-btn" to="/mail/edit"> + Compose</Link>
+                        <MailFolder setFilter={this.onSetFilter} />
                         <MailStatus readPercentage={readPercentage} />
                     </div>
                     <MailList mails={mailsForDisplay} onRemove={this.onRemoveMail} onToggleRead={this.onToggleRead} />
                 </div>
                 {/* <MailCompose /> */}
-
+                <Router>
+                    <Route path="/mail/edit/:mailId?" component={MailCompose} />
+                    <Route path="/mail/mailId" component={MailDetails} />
+                </Router>
             </section>
         );
     }

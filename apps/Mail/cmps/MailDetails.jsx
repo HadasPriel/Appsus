@@ -15,6 +15,7 @@ export class MailDetails extends React.Component {
 
     loadMail() {
         const { mailId } = this.props.match.params
+        console.log(this.props);
         mailService.markAsRead(mailId)
         mailService.getById(mailId)
             .then(mail => { this.setState({ mail }) })
@@ -49,19 +50,25 @@ export class MailDetails extends React.Component {
         const { id, subject, body } = this.state.mail
         var time = this.mailDate
         return (
-            <article className="mail-details main-layout">
-                <Link className="back" to={'/mail'}> back to inbox</Link>
-                <h1 className="subject">{subject}</h1>
-                <button className="delete" onClick={this.onRemove}></button>
-                <Link className="edit" to={`/mail/edit/${this.state.mail.id}`}></Link>
+            <section className="mail-details main-layout">
+                <nav>
+                    <Link className="back" to={'/mail'}> back to inbox</Link>
+                    <span className="nextprev">
+                        <button className="prev" onClick={() => { this.onMove(-1) }}></button>
+                        <button className="next" onClick={() => { this.onMove(1) }}></button>
+                    </span>
+                </nav>
+                <article className="mail-body">
+                    <h1 className="subject">{subject}</h1>
+                    <Link className="edit" to={`/mail/edit/${this.state.mail.id}`}></Link>
+                    <button className="delete" onClick={this.onRemove}></button>
 
-                <h2 className="date">sent at: {time}</h2>
-                <p className="body">{body}</p>
-                <button onClick={() => { this.onMove(-1) }}>← Previous</button>
-                <button onClick={() => { this.onMove(1) }}>Next →</button>
+                    <h2 className="date">sent at: {time}</h2>
+                    <p className="body">{body}</p>
 
 
-            </article>
+                </article>
+            </section>
         )
     }
 }

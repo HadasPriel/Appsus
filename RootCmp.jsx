@@ -38,8 +38,8 @@ export class RootCmp extends React.Component {
                     <Switch>
                         <Route path="/keep/edit/:keepId" component={KeepEdit} />
                         <Route path="/keep" component={KeepApp} />
-                        <Route path="/mail/edit/:mailId?" component={MailCompose} />
-                        <Route path="/mail/:mailId" component={MailDetails} />
+                        {/* <Route path="/mail/edit/:mailId?" component={MailCompose} />
+                        <Route path="/mail/:mailId" component={MailDetails} /> */}
                         <Route path="/mail" component={MailApp} />
                         <Route path="/" component={Home} />
                     </Switch>
