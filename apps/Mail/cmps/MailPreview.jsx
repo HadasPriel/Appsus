@@ -1,4 +1,5 @@
 import { eventBusService } from "../../../services/eventBusService.js";
+import { keepService } from "../../Keep/services/keepService.js";
 
 const { Link } = ReactRouterDOM;
 
@@ -16,6 +17,13 @@ export function MailPreview({ mail, onRemove, onToggleRead }) {
         }, 2000)
     }
 
+    function onSendKeep() {
+        const mailToKeep = {
+            subject: mail.subject,
+            body: mail.body
+        }
+        keepService.getMail(mailToKeep)
+    }
 
     const readClass = (mail.isRead) ? 'read' : 'unread'
     return (
@@ -28,6 +36,7 @@ export function MailPreview({ mail, onRemove, onToggleRead }) {
                 <Link className="edit" to={`/mail/edit/${mail.id}`}></Link>
                 <button className="read-sign" onClick={() => { onToggleRead(mail.id) }}></button>
                 <button className="delete" onClick={remove} ></button>
+                <button className="delete" onClick={onSendKeep} >send to keep</button>
             </div>
 
         </article>

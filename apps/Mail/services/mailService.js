@@ -90,7 +90,7 @@ function getKeep(keep) {
         id: utilService.makeId(),
         isReas: false,
         sentAt: Date.now(),
-        subject: 'E-MAIL From Keeps' + keep.title,
+        subject: 'E-MAIL From Keeps ' + keep.title,
         body: keep.body
     }
     gMails = [newKeep, ...gMails];
