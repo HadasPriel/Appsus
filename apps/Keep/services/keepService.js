@@ -287,3 +287,13 @@ function turnToToDos(input) {
     console.log(todosAsObj)
     return todosAsObj
 }
+
+
+function turnToEmbedeVideo(input){
+    const embedUrl = 'https://www.youtube.com/embed/'
+    const userUrl = input.slice(input.indexOf('='))
+
+
+}
+
+

@@ -35,6 +35,12 @@
     content: "\f0ca";
 }
 
+.keep-add .video::after {
+    font-family: fa-brands;
+    content: "\f167";
+}
+
+
 .keep-add .save::after {
     font-family: fa-solid;
     content: "\f0c7";

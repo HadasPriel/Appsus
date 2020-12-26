@@ -2,6 +2,7 @@
 import { KeepEdit } from "./KeepEdit.jsx";
 import { keepService } from "../services/keepService.js";
 import { NoteColorPicker } from "./NoteColorPicker.jsx";
+import { mailService } from "../../Mail/services/mailService.js"
 
 export class NoteImg extends React.Component {
     state = {
@@ -53,6 +54,16 @@ export class NoteImg extends React.Component {
         })
     }
 
+    onSendMail = () => {
+        const { keep } = { ...this.state }
+        const keepToSend = {
+            title: keep.info.title,
+            body: keep.info.url
+        }
+        mailService.getKeep(keepToSend)
+
+    }
+
     render() {
         const keep = { ...this.state.keep };
 
@@ -64,6 +75,7 @@ export class NoteImg extends React.Component {
                 <button onClick={() => { this.props.onRemoveKeep(keep.id) }}>Remove</button>
                 <button onClick={this.toggleEdit}>Edit</button>
                 <button onClick={this.toggleColor}>Color</button>
+                <button onClick={this.onSendMail}>Send Mail</button>
                 {this.state.isEdit && <KeepEdit txt={keep.info.url} toggleEdit={this.toggleEdit} label={keep.info.title} onSaveChange={this.onSaveChange} />}
                 {this.state.isColor && <NoteColorPicker toggleColor={this.toggleColor} onSetColor={this.onSetColor} />}
             </div>
