@@ -46,7 +46,7 @@ function _getDemoKeeps() {
             type: 'NoteText',
             isPinned: true,
             info: {
-                txt: 'Fullstack Me Baby!'
+                txt: 'Google - Best Friend I never had!'
             },
             style: {
                 backgroundColor: '#E0BBE4'
@@ -57,7 +57,7 @@ function _getDemoKeeps() {
             type: 'NoteImg',
             info: {
                 url: 'https://images.pexels.com/photos/289323/pexels-photo-289323.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-                title: 'Me playing Mi'
+                title: 'Air'
             },
             style: {
                 backgroundColor: '#957DAD'
@@ -65,12 +65,24 @@ function _getDemoKeeps() {
         },
         {
             id: utilService.makeId(),
+            type: 'NoteVideo',
+            info: {
+                url: 'https://www.youtube.com/embed/dNoVM-4xGA4',
+                title: 'Puppy'
+            },
+            style: {
+                backgroundColor: '#FEC8D8'
+            },
+
+        },
+        {
+            id: utilService.makeId(),
             type: 'NoteTodos',
             info: {
                 label: 'How was it:',
                 todos: [
-                    { id: utilService.makeId(), txt: 'Do that', doneAt: null },
-                    { id: utilService.makeId(), txt: 'Do this', doneAt: 187111111 }
+                    { id: utilService.makeId(), txt: 'Go to Yoga', doneAt: null },
+                    { id: utilService.makeId(), txt: 'Just stand up', doneAt: 187111111 }
                 ]
             },
             style: {
@@ -83,7 +95,7 @@ function _getDemoKeeps() {
             type: 'NoteImg',
             info: {
                 url: 'https://cdn.pixabay.com/photo/2015/04/19/08/33/flower-729512_1280.jpg',
-                title: 'Me playing Mi'
+                title: 'Purple Rulezzz'
             },
             style: {
                 backgroundColor: '#FEC8D8'
@@ -111,12 +123,86 @@ function _getDemoKeeps() {
             type: 'NoteVideo',
             info: {
                 url: 'https://www.youtube.com/embed/sdDGBF5jW6A',
-                title: 'puppy'
+                title: 'Puppy'
             },
             style: {
                 backgroundColor: '#FEC8D8'
             },
 
+        },
+
+        {
+            id: utilService.makeId(),
+            type: 'NoteImg',
+            info: {
+                url: 'https://images.pexels.com/photos/6027785/pexels-photo-6027785.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+                title: 'Happy New Year'
+            },
+            style: {
+                backgroundColor: '#957DAD'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            type: 'NoteText',
+            isPinned: true,
+            info: {
+                txt: 'How to CSS?'
+            },
+            style: {
+                backgroundColor: '#E0BBE4'
+            }
+        },
+
+        {
+            id: utilService.makeId(),
+            type: 'NoteImg',
+            info: {
+                url: 'https://images.pexels.com/photos/1387577/pexels-photo-1387577.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+                title: 'New Year'
+            },
+            style: {
+                backgroundColor: '#957DAD'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            type: 'NoteTodos',
+            info: {
+                label: 'How was it:',
+                todos: [
+                    { id: utilService.makeId(), txt: 'Go to park', doneAt: null },
+                    { id: utilService.makeId(), txt: 'Go to shop', doneAt: 187111111 },
+                    { id: utilService.makeId(), txt: 'Again just stand up', doneAt: 187111111 }
+                ]
+            },
+            style: {
+                backgroundColor: '#FFDFD3'
+            }
+        },
+
+        {
+            id: utilService.makeId(),
+            type: 'NoteImg',
+            info: {
+                url: 'https://images.pexels.com/photos/3397935/pexels-photo-3397935.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+                title: 'Me after this weekend'
+            },
+            style: {
+                backgroundColor: '#957DAD'
+            }
+        },
+
+        {
+            id: utilService.makeId(),
+            type: 'NoteImg',
+            info: {
+                url: 'https://images.pexels.com/photos/1882309/pexels-photo-1882309.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+                title: 'Happy Moments'
+            },
+            style: {
+                backgroundColor: '#957DAD'
+            }
         },
 
     ];
@@ -133,7 +219,7 @@ function add(keep) {
     if (keepToAdd.type === 'NoteTodos') {
         keepToAdd.info.todos = turnToToDos(keepToAdd.info.todos)
     }
-    if (keepToAdd.type === 'NoteVideo'){
+    if (keepToAdd.type === 'NoteVideo') {
         keepToAdd.info.url = turnToEmbedeVideo(keepToAdd.info.url)
     }
     gKeeps = [keepToAdd, ...gKeeps];
@@ -296,14 +382,14 @@ function turnToToDos(input) {
 
 function turnToEmbedeVideo(input) {
     const embedUrl = 'https://www.youtube.com/embed/'
-    const userUrl = input.slice(input.indexOf('=')+1)
+    const userUrl = input.slice(input.indexOf('=') + 1)
     const urlToUse = embedUrl + userUrl
     return urlToUse
 }
 
 function turnToYouTubeVideo(input) {
     const embedUrl = 'https://www.youtube.com/watch?v='
-    const userUrl = input.slice(input.lastIndexOf('/')+1)
+    const userUrl = input.slice(input.lastIndexOf('/') + 1)
     const urlToUse = embedUrl + userUrl
     return urlToUse
 }

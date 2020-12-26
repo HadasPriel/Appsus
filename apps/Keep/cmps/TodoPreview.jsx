@@ -39,11 +39,13 @@ export class TodoPreview extends React.Component {
 
         return (
 
-            <li className={`todo-preview flex align-center space-between ${classCross}`} >
-                <span onClick={this.onMarkTodo}>{todo.txt}</span>
-                <button className='remove' type='button' onClick={this.onDeleteTodo}></button>
+            <li className={`todo-preview flex align-center space-between `} >
+                <span className={classCross} onClick={this.onMarkTodo}>{todo.txt}</span>
+                <button className='remove' type='button' onClick={this.onDeleteTodo} title="Remove Item"></button>
             </li>
         )
 
     }
 }
+
+

@@ -71,13 +71,13 @@ export class KeepAdd extends React.Component {
                         placeholder={this.state.wellcomeMsg} type="text" name={this.state.key} autoComplete="off"
                         onChange={this.onInputChange} />
                     <div className="bar">
-                        <button className="txt" type='button' onClick={() => this.onChooseKeepType('NoteText')}></button>
-                        <button className="img" type='button' onClick={() => this.onChooseKeepType('NoteImg')}></button>
-                        <button className="list" type='button' onClick={() => this.onChooseKeepType('NoteTodos')}></button>
-                        <button className="video" type='button' onClick={() => this.onChooseKeepType('NoteVideo')}></button>
+                        <button className="txt" title="Text Note" type='button' onClick={() => this.onChooseKeepType('NoteText')}></button>
+                        <button className="img" title="Image Note" type='button' onClick={() => this.onChooseKeepType('NoteImg')}></button>
+                        <button className="list" title="List Note" type='button' onClick={() => this.onChooseKeepType('NoteTodos')}></button>
+                        <button className="video" title="Video Note" type='button' onClick={() => this.onChooseKeepType('NoteVideo')}></button>
                     </div>
                 </div>
-                <button className="save" type='submit'></button>
+                {/* <button className="save" type='submit'></button> */}
 
 
             </form>

@@ -7,6 +7,9 @@
     object-fit: cover;
 }
 
+.note.note-img h4{
+    color: #323232;
+}
 .note.note-img .btn-container>* {
     font-family: fa-solid;
 }
@@ -30,4 +33,10 @@
 .note.note-img  .btn-container .mail::after {
    
     content: "\f0e0";
+}
+
+
+.note.note-img:hover {
+    box-shadow: 0px 9px 11px 0.5px rgba(0, 0, 0, 0.10);
+    font-size: 18px;
 }

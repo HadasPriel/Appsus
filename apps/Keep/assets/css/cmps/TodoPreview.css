@@ -1,9 +1,9 @@
-.todo-preview.active {
+.todo-preview .active {
     text-decoration: none;
 }
 
 
-.todo-preview.done {
+.todo-preview .done {
     text-decoration: line-through;
 }
 
@@ -17,5 +17,5 @@
 
 .todo-preview .remove::after {
     font-family: fa-solid;
-    content: "\f057";
+    content: "\f00d";
 }

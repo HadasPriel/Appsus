@@ -32,17 +32,19 @@ export class KeepEdit extends React.Component {
     render() {
     
         return (
-            <section className='keep-edit'>
+            <section className='keep-edit flex align-center'>
 
-                {this.state.label && <input value={this.state.label}
+                {this.state.label && <input value={this.state.label} title="Title"
                     placeholder="Edit label" type="text" name="label" autoComplete="off"
-                    onChange={this.onInputChange} />}
+                    onChange={this.onInputChange} /> }
 
-                <input value={this.state.txt} required
+                <input className="edit-input" value={this.state.txt} title="Your Change"
                     placeholder="Edit text" type="text" name="txt" autoComplete="off"
                     onChange={this.onInputChange} />
-                <button onClick={this.props.toggleEdit}>Cancel Changes</button>
-                <button type='button'onClick={this.onSaveInputChanges}>Save Changes</button>
+               <div className ='btn-container'>
+                <button className='cancel' title="Cancel Change" onClick={this.props.toggleEdit}></button>
+                <button className='save' title="Save Change"type='button'onClick={this.onSaveInputChanges}></button>
+                </div>
 
             </section>
         );
