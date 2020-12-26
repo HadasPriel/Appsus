@@ -40,6 +40,17 @@ function _saveKeepsToStorage() {
 
 function _getDemoKeeps() {
     const keeps = [
+        {
+            id: utilService.makeId(),
+            type: 'NoteImg',
+            info: {
+                url: 'https://images.pexels.com/photos/1882309/pexels-photo-1882309.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+                title: 'Happy Moments'
+            },
+            style: {
+                backgroundColor: '#FFDFD3'
+            }
+        },
 
         {
             id: utilService.makeId(),
@@ -68,7 +79,7 @@ function _getDemoKeeps() {
             type: 'NoteVideo',
             info: {
                 url: 'https://www.youtube.com/embed/dNoVM-4xGA4',
-                title: 'Puppy'
+                title: 'Panda'
             },
             style: {
                 backgroundColor: '#FEC8D8'
@@ -193,17 +204,7 @@ function _getDemoKeeps() {
             }
         },
 
-        {
-            id: utilService.makeId(),
-            type: 'NoteImg',
-            info: {
-                url: 'https://images.pexels.com/photos/1882309/pexels-photo-1882309.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
-                title: 'Happy Moments'
-            },
-            style: {
-                backgroundColor: '#957DAD'
-            }
-        },
+
 
     ];
     return keeps;

@@ -88,9 +88,9 @@ export class NoteTodos extends React.Component {
                 <TodoAdd id={keep.id} addTodo={this.addTodo} />
                 <TodoList todos={todos} keepId={keep.id} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
                 <div className='note btn-container flex'>
-                    <button className='delete' onClick={() => { this.props.onRemoveKeep(keep.id) }}></button>
-                    <button className='color' onClick={this.toggleColor}></button>
-                    <button className='mail' onClick={this.onSendMail}></button>
+                    <button className='delete' title="Delete Note" onClick={() => { this.props.onRemoveKeep(keep.id) }}></button>
+                    <button className='color' title="Change Note Color" onClick={this.toggleColor}></button>
+                    <button className='mail' title="Send Note As Mail" onClick={this.onSendMail}></button>
                 </div>
                 {this.state.isColor && <NoteColorPicker toggleColor={this.toggleColor} onSetColor={this.onSetColor} />}
 

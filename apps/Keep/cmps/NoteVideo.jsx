@@ -31,7 +31,12 @@ export class NoteVideo extends React.Component {
         const { keep } = { ...this.state }
         console.log(keep)
         keep.info.title = title
-        keep.info.url = keepService.turnToEmbedeVideo(url)
+        if (keep.info.url !== url) {
+            keep.info.url = keepService.turnToEmbedeVideo(url)
+        } else {
+            keep.info.url = url
+        }
+
         keepService.update(keep).then(savedKeep => {
             this.setState({ keep: savedKeep });
         })
@@ -75,10 +80,10 @@ export class NoteVideo extends React.Component {
                 <h4>{keep.info.title}</h4>
                 <iframe width='200' height='200' src={keep.info.url} />
                 <div className='note btn-container flex'>
-                    <button className='delete' onClick={() => { this.props.onRemoveKeep(keep.id) }}></button>
-                    <button className='edit' onClick={this.toggleEdit}></button>
-                    <button className='color' onClick={this.toggleColor}></button>
-                    <button className='mail' onClick={this.onSendMail}></button>
+                    <button className='delete' title="Delete Note" onClick={() => { this.props.onRemoveKeep(keep.id) }}></button>
+                    <button className='edit' title="Edit Note" onClick={this.toggleEdit}></button>
+                    <button className='color' title="Change Note Color" onClick={this.toggleColor}></button>
+                    <button className='mail' title="Send Note As Mail" onClick={this.onSendMail}></button>
                 </div>
                 {this.state.isEdit && <KeepEdit txt={keep.info.url} toggleEdit={this.toggleEdit} label={keep.info.title} onSaveChange={this.onSaveChange} />}
                 {this.state.isColor && <NoteColorPicker toggleColor={this.toggleColor} onSetColor={this.onSetColor} />}

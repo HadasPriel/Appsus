@@ -70,8 +70,6 @@ export class NoteTxt extends React.Component {
     }
 
 
-
-
     render() {
         const keep = { ...this.state.keep }
 
@@ -79,10 +77,10 @@ export class NoteTxt extends React.Component {
             <section className='note note-txt flex align-center space-between ' style={keep.style}>
                 <div>{keep.info.txt}</div>
                 <div className='note btn-container flex'>
-                    <button className='delete' onClick={() => { this.props.onRemoveKeep(keep.id) }}></button>
-                    <button className='edit' onClick={this.toggleEdit}></button>
-                    <button className='color' onClick={this.toggleColor}></button>
-                    <button className='mail' onClick={this.onSendMail}></button>
+                    <button className='delete' title="Delete Note" onClick={() => { this.props.onRemoveKeep(keep.id) }}></button>
+                    <button className='edit' title="Edit Note" onClick={this.toggleEdit}></button>
+                    <button className='color' title="Change Note Color" onClick={this.toggleColor}></button>
+                    <button className='mail' title="Send Note As Mail" onClick={this.onSendMail}></button>
                 </div>
 
                 {this.state.isEdit && <KeepEdit txt={keep.info.txt} toggleEdit={this.toggleEdit} label={null} onSaveChange={this.onSaveChange} />}

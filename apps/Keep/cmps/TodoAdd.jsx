@@ -7,9 +7,9 @@ export class TodoAdd extends React.Component {
 
     };
 
-    
 
-   
+
+
 
     onSaveTodo = (ev) => {//on submit
         ev.preventDefault();
@@ -36,12 +36,12 @@ export class TodoAdd extends React.Component {
         return (
             <form className="todo-add flex align-center space-between" onSubmit={this.onSaveTodo}>
                 <div className="row">
-                    <input value={this.state.txt} 
+                    <input value={this.state.txt}
                         placeholder="Add your todo" type="text" name='txt' autoComplete="off"
                         onChange={this.onInputChange} />
 
                 </div>
-                <button className="save" type='submit'></button>
+                <button className="save" title="Add your todo" type='submit'></button>
 
 
             </form>
