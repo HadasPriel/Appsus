@@ -65,12 +65,24 @@ function _getDemoKeeps() {
         },
         {
             id: utilService.makeId(),
+            type: 'NoteVideo',
+            info: {
+                url: 'https://www.youtube.com/embed/dNoVM-4xGA4',
+                title: 'Puppy'
+            },
+            style: {
+                backgroundColor: '#FEC8D8'
+            },
+
+        },
+        {
+            id: utilService.makeId(),
             type: 'NoteTodos',
             info: {
                 label: 'How was it:',
                 todos: [
-                    { id: utilService.makeId(), txt: 'Do that', doneAt: null },
-                    { id: utilService.makeId(), txt: 'Do this', doneAt: 187111111 }
+                    { id: utilService.makeId(), txt: 'Go to Yoga', doneAt: null },
+                    { id: utilService.makeId(), txt: 'Just stand up', doneAt: 187111111 }
                 ]
             },
             style: {
@@ -151,6 +163,21 @@ function _getDemoKeeps() {
             },
             style: {
                 backgroundColor: '#957DAD'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            type: 'NoteTodos',
+            info: {
+                label: 'How was it:',
+                todos: [
+                    { id: utilService.makeId(), txt: 'Go to park', doneAt: null },
+                    { id: utilService.makeId(), txt: 'Go to shop', doneAt: 187111111 },
+                    { id: utilService.makeId(), txt: 'Again just stand up', doneAt: 187111111 }
+                ]
+            },
+            style: {
+                backgroundColor: '#FFDFD3'
             }
         },
 

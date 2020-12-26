@@ -7,12 +7,9 @@ export class TodoAdd extends React.Component {
 
     };
 
-    refInput = React.createRef();
+    
 
-    componentDidMount() {
-
-        this.refInput.current.focus();
-    }
+   
 
     onSaveTodo = (ev) => {//on submit
         ev.preventDefault();
@@ -39,7 +36,7 @@ export class TodoAdd extends React.Component {
         return (
             <form className="todo-add flex align-center space-between" onSubmit={this.onSaveTodo}>
                 <div className="row">
-                    <input value={this.state.txt} ref={this.refInput}
+                    <input value={this.state.txt} 
                         placeholder="Add your todo" type="text" name='txt' autoComplete="off"
                         onChange={this.onInputChange} />
 
