@@ -15,9 +15,15 @@
     src: url(../fonts/fa-brands-400.ttf);
 }
 
-@font-face {
+
+/* @font-face {
     font-family: futura;
     src: url(../fonts/Futura.ttf);
+} */
+
+@font-face {
+    font-family: Product;
+    src: url(../fonts/Product.ttf);
 }
 
 
