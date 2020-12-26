@@ -9,13 +9,10 @@ export function MailPreview({ mail, onRemove, onToggleRead }) {
 
     function remove() {
         onRemove(mail.id)
-        eventBusService.emit('showMsg', 'mail deleted')
-        eventBusService.emit('display', '')
-        setTimeout(() => {
-            eventBusService.emit('showMsg', '')
-            eventBusService.emit('display', 'none')
-        }, 2000)
+        eventBusService.showBusMsg('Mail Deleted')
     }
+
+
 
     function onSendKeep() {
         const mailToKeep = {
@@ -23,6 +20,7 @@ export function MailPreview({ mail, onRemove, onToggleRead }) {
             body: mail.body
         }
         keepService.getMail(mailToKeep)
+        eventBusService.showBusMsg('Sent To Keep')
     }
 
     const readClass = (mail.isRead) ? 'read' : 'unread'
