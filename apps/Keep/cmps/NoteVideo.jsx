@@ -3,7 +3,7 @@ import { KeepEdit } from "./KeepEdit.jsx";
 import { keepService } from "../services/keepService.js";
 import { NoteColorPicker } from "./NoteColorPicker.jsx";
 import { mailService } from "../../Mail/services/mailService.js"
-import {eventBusService} from "../../../services/eventBusService.js"
+import { eventBusService } from "../../../services/eventBusService.js"
 
 export class NoteVideo extends React.Component {
     state = {
@@ -70,14 +70,16 @@ export class NoteVideo extends React.Component {
         const keep = { ...this.state.keep };
 
         return (
-            <div className='note note-video' style={keep.style}>
+            <div className='note note-video flex align-center space-between' style={keep.style}>
 
-                <p>{keep.info.title}</p>
+                <div>{keep.info.title}</div>
                 <iframe width='200' height='200' src={keep.info.url} />
-                <button onClick={() => { this.props.onRemoveKeep(keep.id) }}>Remove</button>
-                <button onClick={this.toggleEdit}>Edit</button>
-                <button onClick={this.toggleColor}>Color</button>
-                <button onClick={this.onSendMail}>Send Mail</button>
+                <div className='note btn-container flex'>
+                    <button className='delete' onClick={() => { this.props.onRemoveKeep(keep.id) }}></button>
+                    <button className='edit' onClick={this.toggleEdit}></button>
+                    <button className='color' onClick={this.toggleColor}></button>
+                    <button className='mail' onClick={this.onSendMail}></button>
+                </div>
                 {this.state.isEdit && <KeepEdit txt={keep.info.url} toggleEdit={this.toggleEdit} label={keep.info.title} onSaveChange={this.onSaveChange} />}
                 {this.state.isColor && <NoteColorPicker toggleColor={this.toggleColor} onSetColor={this.onSetColor} />}
             </div>

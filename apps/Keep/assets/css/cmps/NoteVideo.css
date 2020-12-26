@@ -1,0 +1,29 @@
+.note.note-video {
+    flex-direction: column;
+}
+
+
+.note.note-video .btn-container>* {
+    font-family: fa-solid;
+}
+
+
+.note.note-video .btn-container .delete::after {
+
+    content: "\f2ed";
+}
+
+.note.note-video .btn-container .edit::after {
+
+    content: "\f044";
+}
+
+.note.note-video .btn-container .color::after {
+
+    content: "\f53f";
+}
+
+.note.note-video .btn-container .mail::after {
+
+    content: "\f0e0";
+}

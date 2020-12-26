@@ -1,8 +1,21 @@
-.todo-preview.active{
+.todo-preview.active {
     text-decoration: none;
 }
 
 
-.todo-preview.done{
+.todo-preview.done {
     text-decoration: line-through;
+}
+
+
+.todo-preview {
+    border-bottom: 1px solid rgba(18, 43, 63, 0.25);
+    align-items: center;
+    padding: 2px;
+
+}
+
+.todo-preview .remove::after {
+    font-family: fa-solid;
+    content: "\f057";
 }

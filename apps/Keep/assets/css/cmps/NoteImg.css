@@ -1,9 +1,33 @@
-.note-img {
-    background-color: rgb(131, 197, 190);
+.note.note-img{
+    flex-direction: column;
+ }
+.note-img img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
 }
 
-.note-img img {
-    width: 50%;
-    height: 50%;
-    object-fit: cover;
+.note.note-img .btn-container>* {
+    font-family: fa-solid;
+}
+
+
+.note.note-img  .btn-container .delete::after {
+   
+    content: "\f2ed";
+}
+
+.note.note-img  .btn-container .edit::after {
+   
+    content: "\f044";
+}
+
+.note.note-img  .btn-container .color::after {
+   
+    content: "\f53f";
+}
+
+.note.note-img  .btn-container .mail::after {
+   
+    content: "\f0e0";
 }
