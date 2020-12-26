@@ -1,4 +1,12 @@
+.notes-container-main {
+    overflow-y: scroll;
+}
+
 .notes-container {
+    height: 100%;
+    column-count: 4;
+    margin: 0 auto 2em;
+    column-gap: 1.5em;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, auto));
     grid-auto-rows: auto;
