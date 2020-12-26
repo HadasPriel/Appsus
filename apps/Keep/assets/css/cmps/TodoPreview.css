@@ -15,6 +15,10 @@
 
 }
 
+.todo-preview span{
+    cursor: pointer;
+}
+
 .todo-preview .remove::after {
     font-family: fa-solid;
     content: "\f00d";
