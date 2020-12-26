@@ -73,7 +73,7 @@ export class MailDetails extends React.Component {
 
                     <h2 className="date">sent at: {time}</h2>
                     <p className="body">{body}</p>
-
+                    {/* <img src={`${this.state.mail.img}`}></img> */}
 
                 </article>
             </section>

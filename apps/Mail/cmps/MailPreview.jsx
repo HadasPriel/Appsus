@@ -24,17 +24,21 @@ export function MailPreview({ mail, onRemove, onToggleRead }) {
     }
 
     const readClass = (mail.isRead) ? 'read' : 'unread'
+    // const date = JSON.parse(mail.sentAt)
+    // console.log(date);
+    // const currDate = getMonth(date) + ', ' + date.getYear()
     return (
         <article className={`mail-preview ${readClass} flex space-between`}>
             <Link className="txt" to={`/mail/${mail.id}`}>
                 <span className="subject">{mail.subject} </span>
                 <span className="body">{mail.body.substring(0, 79)}</span>
             </Link>
+            {/* <span>{currDate}</span> */}
             <div className="bar">
-                <Link className="edit" to={`/mail/edit/${mail.id}`}></Link>
-                <button className="read-sign" onClick={() => { onToggleRead(mail.id) }}></button>
-                <button className="delete" onClick={remove} ></button>
-                <button className="keep" onClick={onSendKeep} ></button>
+                <button><Link className="edit" title="Replay" to={`/mail/edit/${mail.id}`}></Link></button>
+                <button className="read-sign" title="Mark as read" onClick={() => { onToggleRead(mail.id) }}></button>
+                <button className="delete" title="Delete" onClick={remove} ></button>
+                <button className="keep" title="Save as Keep" onClick={onSendKeep} ></button>
             </div>
 
         </article>

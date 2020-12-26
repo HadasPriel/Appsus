@@ -6,7 +6,6 @@
     display: inline-block;
     padding: 15px;
     border-radius: 1em;
-  
     margin-bottom: 50px;
 }
 
@@ -21,6 +20,10 @@
 
 .keep-add .bar>* {
     font-family: fa-solid;
+}
+
+.keep-add .bar>*:hover {
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .keep-add .txt::after {
@@ -39,7 +42,6 @@
     font-family: fa-brands;
     content: "\f167";
 }
-
 
 .keep-add .save::after {
     font-family: fa-solid;

@@ -33,6 +33,7 @@
     background-color: rgb(250, 250, 250);
     border: 1px solid rgb(83, 83, 83);
     border-radius: 5px;
+    box-shadow: 0px 9px 11px 11px rgba(0, 0, 0, 0.198);
 }
 
 .app-header .hide {
@@ -40,7 +41,7 @@
 }
 
 .app-header .header-nav .item {
-    font-size: 30px;
+    font-size: 12px;
     display: inline-block;
     height: 70px;
     width: 70px;
@@ -48,39 +49,44 @@
     color: rgb(18, 43, 63);
 }
 
-.app-header .header-nav .home::after {
+.app-header .header-nav .item::before {
+    font-size: 30px;
+    font-family: fa-solid;
+}
+
+.app-header .header-nav .home::before {
     content: "\f015";
 }
 
-.app-header .header-nav .mail::after {
+.app-header .header-nav .mail::before {
     content: "\f0e0";
 }
 
-.app-header .header-nav .keep::after {
+.app-header .header-nav .keep::before {
     content: "\f249";
 }
 
-.app-header .header-nav .map::after {
+.app-header .header-nav .map::before {
     content: "\f5a0";
 }
 
-.app-header .header-nav .books::after {
+.app-header .header-nav .books::before {
     content: "\f02d";
 }
 
-.app-header .header-nav .calander::after {
+.app-header .header-nav .calander::before {
     content: "\f073";
 }
 
-.app-header .header-nav .news::after {
+.app-header .header-nav .news::before {
     content: "\f1ea";
 }
 
-.app-header .header-nav .photos::after {
+.app-header .header-nav .photos::before {
     content: "\f302";
 }
 
-.app-header .header-nav .contacts::after {
+.app-header .header-nav .contacts::before {
     content: "\f2c2";
 }
 

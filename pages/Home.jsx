@@ -24,7 +24,7 @@ export function Home() {
                 <div className="main-layout">
                     <h2>KEEP</h2>
                     <h3>the most important to you</h3>
-                    <Link className="btn" to={'/keep'}>Try</Link>
+                    <Link className="btn" to={'/keep'}>Submit</Link>
                 </div>
             </div>
             <div className="seconde main-layout">
@@ -37,7 +37,7 @@ export function Home() {
                 <div className="main-layout">
                     <h2>MAIL</h2>
                     <h3>keep in tuch</h3>
-                    <Link className="btn" to={'/mail'}>Try</Link>
+                    <Link className="btn" to={'/mail'}>Submit</Link>
                 </div>
             </div>
             <div className="seconde main-layout">

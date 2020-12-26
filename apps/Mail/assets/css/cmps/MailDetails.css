@@ -5,13 +5,21 @@
 }
 
 .mail-details {
-    /* background-color: rgb(203, 222, 233); */
-    background-color: rgb(240, 240, 240);
+    background-color: rgba(249, 231, 218);
+    padding: 20px;
     position: absolute;
-    top: 85px;
-    /* left: 135p; */
-    width: 97%;
+    top: 100px;
+    width: 100%;
     height: 100%;
+    margin: auto;
+}
+
+.mail-details nav>* {
+    color: rgb(18, 43, 63);
+}
+
+.mail-details nav button {
+    font-size: 20px;
 }
 
 .mail-details .mail-body {
@@ -28,6 +36,10 @@
 
 .mail-details .date {
     font-size: 0.7rem;
+}
+
+.mail-details .edit {
+    color: rgb(18, 43, 63);
 }
 
 .mail-details .back::before {

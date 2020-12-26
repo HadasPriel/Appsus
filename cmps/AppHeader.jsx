@@ -18,20 +18,20 @@ export class AppHeader extends React.Component {
                     <Link className="logo" to={'/'}>Coogle</Link>
                     <nav>
                         <ul className={`header-nav clean-list flex ${display}`}>
-                            <li><NavLink className="item home" exact to="/" onClick={this.toggle}></NavLink></li>
-                            <li><NavLink className="item mail" to="/mail" onClick={this.toggle}></NavLink></li>
-                            <li><NavLink className="item keep" to="/keep" onClick={this.toggle}></NavLink></li>
-                            <li className="item books" onClick={this.toggle}></li>
-                            <li className="item map disable"></li>
-                            <li className="item calander disable"></li>
-                            <li className="item news disable"></li>
-                            <li className="item photos disable"></li>
-                            <li className="item contacts disable"></li>
+                            <li><NavLink className="item home" exact to="/" title="Home" onClick={this.toggle}></NavLink></li>
+                            <li><NavLink className="item mail" to="/mail" title="Mail" onClick={this.toggle}></NavLink></li>
+                            <li><NavLink className="item keep" to="/keep" title="Keep" onClick={this.toggle}></NavLink></li>
+                            <li className="item books" title="Books" onClick={this.toggle}></li>
+                            <li className="item map disable" title="Map"></li>
+                            <li className="item calander disable" title="Calander"></li>
+                            <li className="item news disable" title="News"></li>
+                            <li className="item photos disable" title="Photos"></li>
+                            <li className="item contacts disable" title="Contacts"></li>
                         </ul>
                     </nav>
                     <button onClick={this.toggle} className="grid"></button>
                 </div>
-            </header>
+            </header >
         )
     }
 
