@@ -13,7 +13,7 @@ export const keepService = {
     addTodo,
     updateTodo,
     deleteTodo,
-    
+    getMail 
 };
 var gKeeps;
 _createKeeps();
@@ -296,4 +296,20 @@ function turnToEmbedeVideo(input){
 
 }
 
+function getMail (mail){
+    const keepToAdd =   {
+        id: utilService.makeId(),
+        type: 'NoteText',
+        info: {
+            txt:`${mail.subject}  ${mail.body}`
+        },
+        style: {
+            backgroundColor: '#FFDFD3'
+        }
 
+    }
+
+    gKeeps = [keepToAdd, ...gKeeps];
+    _saveKeepsToStorage();
+
+}
