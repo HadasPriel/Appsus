@@ -37,14 +37,14 @@ export class TodoAdd extends React.Component {
 
     render() {
         return (
-            <form className="todo-add" onSubmit={this.onSaveTodo}>
+            <form className="todo-add flex align-center space-between" onSubmit={this.onSaveTodo}>
                 <div className="row">
                     <input value={this.state.txt} ref={this.refInput}
-                        placeholder="add your todo" type="text" name='txt' autoComplete="off"
+                        placeholder="Add your todo" type="text" name='txt' autoComplete="off"
                         onChange={this.onInputChange} />
 
                 </div>
-                <button className="save" type='submit'>Save</button>
+                <button className="save" type='submit'></button>
 
 
             </form>

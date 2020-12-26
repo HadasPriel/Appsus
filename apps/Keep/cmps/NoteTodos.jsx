@@ -3,7 +3,7 @@ import { TodoList } from './TodoList.jsx'
 import { keepService } from "../services/keepService.js";
 import { NoteColorPicker } from "./NoteColorPicker.jsx";
 import { mailService } from "../../Mail/services/mailService.js"
-import {eventBusService} from "../../../services/eventBusService.js"
+import { eventBusService } from "../../../services/eventBusService.js"
 
 export class NoteTodos extends React.Component {
 
@@ -68,7 +68,7 @@ export class NoteTodos extends React.Component {
     }
     onSendMail = () => {
         const { keep } = { ...this.state }
-        const todosAsStr = keep.info.todos.map(todo=>todo.txt).join(', ')
+        const todosAsStr = keep.info.todos.map(todo => todo.txt).join(', ')
         const keepToSend = {
             title: keep.info.label,
             body: todosAsStr
@@ -84,12 +84,14 @@ export class NoteTodos extends React.Component {
 
         return (
 
-            <div className='note note-todos' style={keep.style}>
+            <div className='note note-todos flex align-center space-between' style={keep.style}>
                 <TodoAdd id={keep.id} addTodo={this.addTodo} />
                 <TodoList todos={todos} keepId={keep.id} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
-                <button onClick={() => { this.props.onRemoveKeep(keep.id) }}>Remove</button>
-                <button onClick={this.toggleColor}>Color</button>
-                <button onClick={this.onSendMail}>Send Mail</button>
+                <div className='note btn-container flex'>
+                    <button className='delete' onClick={() => { this.props.onRemoveKeep(keep.id) }}></button>
+                    <button className='color' onClick={this.toggleColor}></button>
+                    <button className='mail' onClick={this.onSendMail}></button>
+                </div>
                 {this.state.isColor && <NoteColorPicker toggleColor={this.toggleColor} onSetColor={this.onSetColor} />}
 
             </div>

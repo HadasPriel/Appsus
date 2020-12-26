@@ -1,0 +1,8 @@
+.todo-add .save::after{
+    font-family: fa-solid;
+    content: "\f0c7";
+    padding: 5px;
+    border: none;
+    border-radius: 1em;
+    background-color: rgba(255, 255, 255, 0.596)
+}
