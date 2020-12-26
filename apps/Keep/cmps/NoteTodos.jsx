@@ -2,6 +2,8 @@ import { TodoAdd } from './TodoAdd.jsx'
 import { TodoList } from './TodoList.jsx'
 import { keepService } from "../services/keepService.js";
 import { NoteColorPicker } from "./NoteColorPicker.jsx";
+import { mailService } from "../../Mail/services/mailService.js"
+import {eventBusService} from "../../../services/eventBusService.js"
 
 export class NoteTodos extends React.Component {
 
@@ -64,7 +66,17 @@ export class NoteTodos extends React.Component {
             this.setState({ keep: savedKeep });
         })
     }
+    onSendMail = () => {
+        const { keep } = { ...this.state }
+        const todosAsStr = keep.info.todos.map(todo=>todo.txt).join(', ')
+        const keepToSend = {
+            title: keep.info.label,
+            body: todosAsStr
+        }
+        mailService.getKeep(keepToSend)
+        eventBusService.showBusMsg('Sent To Mail')
 
+    }
 
     render() {
         const keep = { ...this.state.keep };
@@ -77,6 +89,7 @@ export class NoteTodos extends React.Component {
                 <TodoList todos={todos} keepId={keep.id} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
                 <button onClick={() => { this.props.onRemoveKeep(keep.id) }}>Remove</button>
                 <button onClick={this.toggleColor}>Color</button>
+                <button onClick={this.onSendMail}>Send Mail</button>
                 {this.state.isColor && <NoteColorPicker toggleColor={this.toggleColor} onSetColor={this.onSetColor} />}
 
             </div>
