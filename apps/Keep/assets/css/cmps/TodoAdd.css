@@ -1,8 +1,12 @@
 .todo-add .save::after{
     font-family: fa-solid;
-    content: "\f0c7";
+    content: "\f00c";
     padding: 5px;
     border: none;
     border-radius: 1em;
     background-color: rgba(255, 255, 255, 0.596)
+}
+
+.todo-add input{
+    background-color: rgba(255, 255, 255, 0.596) 
 }

@@ -1,0 +1,31 @@
+.keep-edit{
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.keep-edit input{
+   
+    background-color: rgba(255, 255, 255, 0.596) 
+    
+}
+
+.keep-edit .edit-input{
+    margin-top: 10px;
+}
+
+
+.keep-edit .cancel{
+    font-family: fa-solid;
+}
+
+.keep-edit .cancel::after{
+    content: "\f0e2";
+}
+
+.keep-edit .save{
+    font-family: fa-solid;
+}
+
+.keep-edit .save::after{
+    content: "\f00c";
+}

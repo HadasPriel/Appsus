@@ -72,7 +72,7 @@ export class NoteVideo extends React.Component {
         return (
             <div className='note note-video flex align-center space-between' style={keep.style}>
 
-                <div>{keep.info.title}</div>
+                <h4>{keep.info.title}</h4>
                 <iframe width='200' height='200' src={keep.info.url} />
                 <div className='note btn-container flex'>
                     <button className='delete' onClick={() => { this.props.onRemoveKeep(keep.id) }}></button>

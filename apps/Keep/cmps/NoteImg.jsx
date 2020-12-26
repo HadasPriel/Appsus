@@ -72,7 +72,7 @@ export class NoteImg extends React.Component {
         return (
             <section className='note note-img flex align-center space-between' style={keep.style}>
 
-                <div>{keep.info.title}</div>
+                <h4>{keep.info.title}</h4>
                 <img src={keep.info.url} />
                 <div className='note btn-container flex'>
                     <button className='delete' onClick={() => { this.props.onRemoveKeep(keep.id) }}></button>

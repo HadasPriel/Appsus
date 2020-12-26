@@ -7,6 +7,9 @@
     font-family: fa-solid;
 }
 
+.note.note-video h4{
+    color: #323232;
+}
 
 .note.note-video .btn-container .delete::after {
 
@@ -26,4 +29,9 @@
 .note.note-video .btn-container .mail::after {
 
     content: "\f0e0";
+}
+
+.note.note-video:hover {
+    box-shadow: 0px 9px 11px 0.5px rgba(0, 0, 0, 0.10);
+    font-size: 18px;
 }
