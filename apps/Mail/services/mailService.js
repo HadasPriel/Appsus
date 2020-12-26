@@ -10,6 +10,7 @@ export const mailService = {
     toggleMark,
     getReadPercentage,
     save,
+    getKeep
 }
 
 const KEY = 'mailStorage'
@@ -84,9 +85,23 @@ function save(mail) {
     _saveMailsToStorage();
 }
 
+function getKeep(keep) {
+    var newKeep = {
+        id: utilService.makeId(),
+        isReas: false,
+        sentAt: Date.now(),
+        subject: 'E-MAIL From Keeps' + keep.title,
+        body: keep.body
+    }
+    gMails = [newKeep, ...gMails];
+    _saveMailsToStorage();
+}
+
 function _saveMailsToStorage() {
     storageService.save(KEY, gMails)
 }
+
+
 
 function _getDemoMails() {
     const mails = [{
