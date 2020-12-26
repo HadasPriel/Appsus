@@ -1,6 +1,8 @@
 import { KeepEdit } from "./KeepEdit.jsx";
 import { keepService } from "../services/keepService.js";
 import { NoteColorPicker } from "./NoteColorPicker.jsx";
+import { mailService } from "../../Mail/services/mailService.js"
+import {eventBusService} from "../../../services/eventBusService.js"
 
 
 
@@ -56,6 +58,17 @@ export class NoteTxt extends React.Component {
         })
     }
 
+    onSendMail = () => {
+        const { keep } = { ...this.state }
+        const keepToSend = {
+            title: 'Note from Keep',
+            body: keep.info.txt
+        }
+        mailService.getKeep(keepToSend)
+        eventBusService.showBusMsg('Sent To Mail')
+
+    }
+
 
 
 
@@ -68,6 +81,7 @@ export class NoteTxt extends React.Component {
                 <button onClick={() => { this.props.onRemoveKeep(keep.id) }}>Remove</button>
                 <button onClick={this.toggleEdit}>Edit</button>
                 <button onClick={this.toggleColor}>Color</button>
+                <button onClick={this.onSendMail}>Send Mail</button>
                 {this.state.isEdit && <KeepEdit txt={keep.info.txt} toggleEdit={this.toggleEdit} label={null} onSaveChange={this.onSaveChange} />}
                 {this.state.isColor && <NoteColorPicker toggleColor={this.toggleColor} onSetColor={this.onSetColor} />}
             </div>

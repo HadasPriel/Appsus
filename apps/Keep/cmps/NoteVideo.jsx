@@ -2,6 +2,8 @@
 import { KeepEdit } from "./KeepEdit.jsx";
 import { keepService } from "../services/keepService.js";
 import { NoteColorPicker } from "./NoteColorPicker.jsx";
+import { mailService } from "../../Mail/services/mailService.js"
+import {eventBusService} from "../../../services/eventBusService.js"
 
 export class NoteVideo extends React.Component {
     state = {
@@ -29,10 +31,10 @@ export class NoteVideo extends React.Component {
         const { keep } = { ...this.state }
         console.log(keep)
         keep.info.title = title
-        keep.info.url = url
+        keep.info.url = keepService.turnToEmbedeVideo(url)
         keepService.update(keep).then(savedKeep => {
-            console.log('Saves succesfully', savedKeep);
-        }).then(this.props.loadKeeps)
+            this.setState({ keep: savedKeep });
+        })
 
     }
 
@@ -53,6 +55,17 @@ export class NoteVideo extends React.Component {
         })
     }
 
+    onSendMail = () => {
+        const { keep } = { ...this.state }
+        const keepToSend = {
+            title: keep.info.title,
+            body: keepService.turnToYouTubeVideo(keep.info.url)
+        }
+        mailService.getKeep(keepToSend)
+        eventBusService.showBusMsg('Sent To Mail')
+
+    }
+
     render() {
         const keep = { ...this.state.keep };
 
@@ -64,6 +77,7 @@ export class NoteVideo extends React.Component {
                 <button onClick={() => { this.props.onRemoveKeep(keep.id) }}>Remove</button>
                 <button onClick={this.toggleEdit}>Edit</button>
                 <button onClick={this.toggleColor}>Color</button>
+                <button onClick={this.onSendMail}>Send Mail</button>
                 {this.state.isEdit && <KeepEdit txt={keep.info.url} toggleEdit={this.toggleEdit} label={keep.info.title} onSaveChange={this.onSaveChange} />}
                 {this.state.isColor && <NoteColorPicker toggleColor={this.toggleColor} onSetColor={this.onSetColor} />}
             </div>

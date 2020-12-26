@@ -13,7 +13,9 @@ export const keepService = {
     addTodo,
     updateTodo,
     deleteTodo,
-    getMail 
+    getMail,
+    turnToEmbedeVideo,
+    turnToYouTubeVideo
 };
 var gKeeps;
 _createKeeps();
@@ -130,6 +132,9 @@ function add(keep) {
 
     if (keepToAdd.type === 'NoteTodos') {
         keepToAdd.info.todos = turnToToDos(keepToAdd.info.todos)
+    }
+    if (keepToAdd.type === 'NoteVideo'){
+        keepToAdd.info.url = turnToEmbedeVideo(keepToAdd.info.url)
     }
     gKeeps = [keepToAdd, ...gKeeps];
     _saveKeepsToStorage();
@@ -289,19 +294,26 @@ function turnToToDos(input) {
 }
 
 
-function turnToEmbedeVideo(input){
+function turnToEmbedeVideo(input) {
     const embedUrl = 'https://www.youtube.com/embed/'
-    const userUrl = input.slice(input.indexOf('='))
-
-
+    const userUrl = input.slice(input.indexOf('=')+1)
+    const urlToUse = embedUrl + userUrl
+    return urlToUse
 }
 
-function getMail (mail){
-    const keepToAdd =   {
+function turnToYouTubeVideo(input) {
+    const embedUrl = 'https://www.youtube.com/watch?v='
+    const userUrl = input.slice(input.lastIndexOf('/')+1)
+    const urlToUse = embedUrl + userUrl
+    return urlToUse
+}
+
+function getMail(mail) {
+    const keepToAdd = {
         id: utilService.makeId(),
         type: 'NoteText',
         info: {
-            txt:`${mail.subject}  ${mail.body}`
+            txt: `${mail.subject}  ${mail.body}`
         },
         style: {
             backgroundColor: '#FFDFD3'
