@@ -1,3 +1,29 @@
-.note-txt {
-    background-color: rgb(240, 128, 128);
+.note.note-txt{
+   flex-direction: column;
+}
+
+
+.note.note-txt .btn-container>* {
+    font-family: fa-solid;
+}
+
+
+.note.note-txt .btn-container .delete::after {
+   
+    content: "\f2ed";
+}
+
+.note.note-txt .btn-container .edit::after {
+   
+    content: "\f044";
+}
+
+.note.note-txt .btn-container .color::after {
+   
+    content: "\f53f";
+}
+
+.note.note-txt .btn-container .mail::after {
+   
+    content: "\f0e0";
 }

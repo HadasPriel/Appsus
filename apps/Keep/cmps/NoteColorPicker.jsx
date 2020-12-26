@@ -11,7 +11,7 @@ export function NoteColorPicker ({onSetColor, toggleColor}){
 
 
     return (
-        <section className='note-color-picker' style={{ backgroundColor: "white" }}>
+        <section className='note-color-picker'>
 
             <span onClick={() => onChangeColor("#679186")} style={{ backgroundColor: "#679186" }}></span>
             <span onClick={() => onChangeColor("#ffb4ac")} style={{ backgroundColor: "#ffb4ac" }}></span>

@@ -70,9 +70,9 @@ export class NoteImg extends React.Component {
         const keep = { ...this.state.keep };
 
         return (
-            <div className='note note-img' style={keep.style}>
+            <section className='note note-img' style={keep.style}>
 
-                <p>{keep.info.title}</p>
+                <div>{keep.info.title}</div>
                 <img src={keep.info.url} />
                 <button onClick={() => { this.props.onRemoveKeep(keep.id) }}>Remove</button>
                 <button onClick={this.toggleEdit}>Edit</button>
@@ -80,7 +80,7 @@ export class NoteImg extends React.Component {
                 <button onClick={this.onSendMail}>Send Mail</button>
                 {this.state.isEdit && <KeepEdit txt={keep.info.url} toggleEdit={this.toggleEdit} label={keep.info.title} onSaveChange={this.onSaveChange} />}
                 {this.state.isColor && <NoteColorPicker toggleColor={this.toggleColor} onSetColor={this.onSetColor} />}
-            </div>
+            </section>
         )
 
     }
