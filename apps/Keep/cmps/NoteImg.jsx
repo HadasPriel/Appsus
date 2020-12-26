@@ -3,6 +3,7 @@ import { KeepEdit } from "./KeepEdit.jsx";
 import { keepService } from "../services/keepService.js";
 import { NoteColorPicker } from "./NoteColorPicker.jsx";
 import { mailService } from "../../Mail/services/mailService.js"
+import {eventBusService} from "../../../services/eventBusService.js"
 
 export class NoteImg extends React.Component {
     state = {
@@ -61,6 +62,7 @@ export class NoteImg extends React.Component {
             body: keep.info.url
         }
         mailService.getKeep(keepToSend)
+        eventBusService.showBusMsg('Sent To Mail')
 
     }
 
