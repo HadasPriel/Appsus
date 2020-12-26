@@ -1,5 +1,5 @@
 .home .hero {
-    padding: 100px;
+    padding: 20px;
     height: 500px;
     background-image: url(../img/cofeee.jpg);
     background-size: cover;
@@ -39,8 +39,6 @@ h3 {
 }
 
 .home .seconde button {
-    position: relative;
-    left: 80%;
     margin-top: 30px;
     background: linear-gradient(151deg, rgba(18, 43, 63, 1) 2%, rgba(239, 108, 145, 1) 70%, rgba(203, 222, 233, 1) 96%);
     color: lavenderblush;
@@ -59,7 +57,7 @@ h3 {
 
 .home .therd {
     position: relative;
-    padding: 30px 20px 300px 100px;
+    padding: 20px 20px 300px 20px;
     background-image: url(../img/organise.jpg);
     background-size: cover;
     background-position: center;
@@ -80,6 +78,7 @@ h3 {
     position: absolute;
     top: 40%;
     right: 50%;
+    transform: translate(50%);
     background-color: #4361ee;
     padding: 15px 50px;
     color: lavenderblush;
@@ -88,12 +87,28 @@ h3 {
     font-weight: 600;
 }
 
-.home .five {
-    padding: 100px 20px 250px 100px;
+.home .therd.five {
+    padding: 30px 20px 250px 50px;
     background-image: url(../img/friends.jpeg);
     color: lavenderblush;
 }
 
 .home .five .btn {
     top: 50%;
+}
+
+@media (min-width: 1000px) {
+    .home .seconde button {
+        position: relative;
+        left: 80%;
+    }
+    .home .hero {
+        padding: 100px;
+    }
+    .home .therd {
+        padding: 30px 20px 300px 100px;
+    }
+    .home .therd.five {
+        padding: 150px 20px 250px 100px;
+    }
 }

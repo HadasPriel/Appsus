@@ -1,10 +1,10 @@
 .mail-compose {
-    position: absolute;
-    height: 75%;
+    position: fixed;
+    height: 100%;
     width: 100%;
-    /* right: 30px; */
-    top: 100px;
-    background-color: rgb(240, 240, 240);
+    bottom: 0vw;
+    margin: 0;
+    background-color: rgb(255, 255, 255);
     border: 2px solid rgb(18, 43, 63);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -23,7 +23,7 @@
     display: flex;
     justify-content: space-between;
     background-color: rgb(18, 43, 63);
-    color: lavender;
+    color: rgb(255, 255, 255);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -58,14 +58,13 @@
     background-color: rgb(18, 43, 63);
     color: rgb(240, 240, 240);
     margin: 10px;
-    /* width: 100%; */
 }
 
 @media (min-width: 1000px) {
-    .mail-compose {
+    .mail-compose.main-layout {
         height: 70%;
         width: 450px;
         right: 30px;
-        bottom: 0;
+        bottom: 0vh;
     }
 }

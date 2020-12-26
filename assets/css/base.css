@@ -57,8 +57,8 @@ a {
 input {
     padding: 5px;
     border: none;
-    border-radius: 1em;
-    background-color: rgba(255, 255, 255, 0.596);
+    border-radius: 5px;
+    background-color: rgba(249, 231, 218, 0.883);
 }
 
 

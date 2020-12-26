@@ -1,10 +1,14 @@
 .mail-preview {
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 0.4em;
-    background-color: rgba(247, 235, 235, 0.657);
+    padding: 20px 20px;
     flex-grow: 1;
-    max-height: 30px;
+    height: 30px;
+    border-bottom: 1px solid rgba(18, 43, 63, 0.25);
+    align-items: center;
+}
+
+.mail-preview:hover {
+    box-shadow: 0px 9px 11px 0.5px rgba(0, 0, 0, 0.10);
+    font-size: 18px;
 }
 
 .mail-preview .subject {

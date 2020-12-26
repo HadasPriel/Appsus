@@ -26,7 +26,7 @@ export function MailPreview({ mail, onRemove, onToggleRead }) {
     const readClass = (mail.isRead) ? 'read' : 'unread'
     return (
         <article className={`mail-preview ${readClass} flex space-between`}>
-            <Link to={`/mail/${mail.id}`}>
+            <Link className="txt" to={`/mail/${mail.id}`}>
                 <span className="subject">{mail.subject} </span>
                 <span className="body">{mail.body.substring(0, 79)}</span>
             </Link>
