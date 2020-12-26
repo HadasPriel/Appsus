@@ -20,8 +20,14 @@
     width: 200px;
 }
 
+.keep-add input:focus {
+    outline-color:grey;
+}
+
+
 .keep-add .bar {
     display: inline-block;
+    cursor: pointer;
 }
 
 .keep-add .bar>* {

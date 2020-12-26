@@ -26,6 +26,10 @@
 
 }
 
+.keep-filter >*:focus {
+    outline-color: grey;
+}
+
 
 
 

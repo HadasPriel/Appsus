@@ -44,6 +44,18 @@ function _getDemoKeeps() {
             id: utilService.makeId(),
             type: 'NoteImg',
             info: {
+                url: 'https://images.pexels.com/photos/1447367/pexels-photo-1447367.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+                title: 'Roses'
+            },
+            style: {
+                backgroundColor: '#FFDFD3'
+            }
+        },
+
+        {
+            id: utilService.makeId(),
+            type: 'NoteImg',
+            info: {
                 url: 'https://images.pexels.com/photos/1882309/pexels-photo-1882309.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
                 title: 'Happy Moments'
             },
@@ -198,6 +210,33 @@ function _getDemoKeeps() {
             info: {
                 url: 'https://images.pexels.com/photos/3397935/pexels-photo-3397935.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
                 title: 'Me after this weekend'
+            },
+            style: {
+                backgroundColor: '#957DAD'
+            }
+        },
+
+        {
+            id: utilService.makeId(),
+            type: 'NoteTodos',
+            info: {
+                label: 'Shopping List:',
+                todos: [
+                    { id: utilService.makeId(), txt: 'Get some wine', doneAt: null },
+                    { id: utilService.makeId(), txt: 'Fix phone', doneAt: 187111111 },
+                    { id: utilService.makeId(), txt: 'Buy laptop', doneAt: null },
+                ]
+            },
+            style: {
+                backgroundColor: '#D291BC'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            type: 'NoteImg',
+            info: {
+                url: 'https://images.pexels.com/photos/70346/leaves-green-shadow-play-royalty-free-70346.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+                title: 'Love Green'
             },
             style: {
                 backgroundColor: '#957DAD'
