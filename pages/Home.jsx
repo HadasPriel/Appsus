@@ -9,7 +9,7 @@ export function Home() {
                 <div className="main-layout">
                     <h2>Breathe</h2>
                     <h2>Relax</h2>
-                    <h2 className="last">Organize your everything</h2>
+                    <h2 className="last">Organize everything</h2>
                 </div>
             </div>
 

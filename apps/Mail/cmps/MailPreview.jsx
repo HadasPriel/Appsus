@@ -34,7 +34,7 @@ export function MailPreview({ mail, onRemove, onToggleRead }) {
                 <Link className="edit" to={`/mail/edit/${mail.id}`}></Link>
                 <button className="read-sign" onClick={() => { onToggleRead(mail.id) }}></button>
                 <button className="delete" onClick={remove} ></button>
-                <button className="delete" onClick={onSendKeep} >send to keep</button>
+                <button className="keep" onClick={onSendKeep} ></button>
             </div>
 
         </article>

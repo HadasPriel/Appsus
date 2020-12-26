@@ -1,12 +1,6 @@
-/* .home {
-    font-size: 25px;
-} */
-
 .home .hero {
     padding: 100px;
-    /* width: 400px; */
     height: 500px;
-    /* object-fit: cover; */
     background-image: url(../img/cofeee.jpg);
     background-size: cover;
     background-position: center;

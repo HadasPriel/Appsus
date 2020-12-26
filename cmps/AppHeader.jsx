@@ -13,11 +13,9 @@ export class AppHeader extends React.Component {
     render() {
         var display = (this.state.display) ? '' : 'hide'
         return (
-            // <React.Fragment>
-            // <div className="screen" onClick={this.toggle}></div>
             <header className="app-header">
                 <div className="header-content main-layout flex space-between align-center">
-                    <Link className="logo" to={'/'}>logo</Link>
+                    <Link className="logo" to={'/'}>Coogle</Link>
                     <nav>
                         <ul className={`header-nav clean-list flex ${display}`}>
                             <li><NavLink className="item home" exact to="/" onClick={this.toggle}></NavLink></li>
@@ -34,7 +32,6 @@ export class AppHeader extends React.Component {
                     <button onClick={this.toggle} className="grid"></button>
                 </div>
             </header>
-            // </React.Fragment>
         )
     }
 

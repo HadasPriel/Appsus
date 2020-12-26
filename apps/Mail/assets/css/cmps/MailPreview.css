@@ -8,7 +8,7 @@
 }
 
 .mail-preview .subject {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .mail-preview .body {
@@ -34,6 +34,10 @@
 
 .mail-preview.unread .read-sign::after {
     content: "\f0e0";
+}
+
+.mail-preview .keep::after {
+    content: "\f249";
 }
 
 @media (min-width: 1000px) {

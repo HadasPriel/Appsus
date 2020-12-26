@@ -9,11 +9,10 @@
     position: relative;
 }
 
-.app-header.logo::after {
+.app-header .logo {
+    font-family: futura;
     color: rgb(241, 241, 241);
-    font-family: fa-solid;
-    content: "\f00a";
-    font-size: 40px;
+    font-size: 35px;
 }
 
 .app-header .grid::after {
